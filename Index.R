@@ -2,6 +2,7 @@ library("shiny")
 library("ECharts2Shiny")
 library("shinyWidgets")
 library("leaflet")
+library("shinydashboard")
 
 temas <- list(
   'tema1',
