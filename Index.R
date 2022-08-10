@@ -1,16 +1,88 @@
+####  bibliotecas ####
 library("shiny")
 library("ECharts2Shiny")
 library("shinyWidgets")
-library("leaflet")
+library("shinythemes")
 library("shinydashboard")
+library("leaflet")
+library('rgdal')
+####    dados     ####
 
-temas <- list(
-  'tema1',
-  'tema2',
-  'tema3',
-  'tema4'
-)
+# Poligonos dos mapas
+mundo <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/mundo.shp')
+continente <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/continentes/Continents.shp')
 
+# Mapas
+mapaPaises <- leaflet(mundo) %>% addTiles()
+mapaContin <- leaflet(continente) %>% addTiles()
+
+# Cores
+cor = c()
+nrow(continente@data)
+
+for(i in 1 : nrow(continente@data)){
+  
+  if(continente@data$JUNK_ID[i] == 1){
+    cor[i] = "green"
+  }else if(continente@data$JUNK_ID[i] == 2){
+    cor[i] = "red"
+  }else if(continente@data$JUNK_ID[i] == 3){
+    cor[i] = "purple"
+  }else if(continente@data$JUNK_ID[i] == 4){
+    cor[i] = "yellow"
+  }else if(continente@data$JUNK_ID[i] == 5){
+    cor[i] = "blue"
+  }else if(continente@data$JUNK_ID[i] == 6){
+    cor[i] = "grey"
+  }else if(continente@data$JUNK_ID[i] == 7){
+    cor[i] = "black"
+  }else if(continente@data$JUNK_ID[i] == 8){
+    cor[i] = "orange"
+  }
+}
+
+# Organizações 
+otan <- c()
+pac_varsovia <- c()
+onu <- c()
+g7 <- c()
+g20 <- c()
+unicef <- c()
+unesco <- c()
+oms <- c()
+
+# Acontecimentos
+gf <- c()
+guerra1 <- c()
+guerra2 <- c()
+aliados <- c()
+eixo <- c()
+
+# Sistemas politicos economicos
+capital <- c()
+sociali <- c()
+republi <- c()
+
+# Blocos econômicos
+omc <- c()
+eurOcidental <-c()
+an <- c()
+lesteasiatico <-c()
+
+# Globalização
+paises_g <- c()
+porcentual <- c()
+rank <- c()
+
+# Tipos de capitais
+expec <- c()
+produ <- c()
+
+# Ordem econômica
+bancos <- c()
+
+####    ui        ####
+temas <- c('tema1', 'tema2', 'tema3', 'tema4')
 ui <- dashboardPage(skin = 'purple',
                     dashboardHeader(
                       titleWidth = 1
@@ -36,10 +108,10 @@ ui <- dashboardPage(skin = 'purple',
                       ),
                       
                       fluidRow(
-                        column(7,
-                               leaflet() %>% addTiles()
+                        column(6,
+                               leaflet(continente) %>% addTiles() %>% addPolygons(color = cor)
                         ),
-                        column(5,
+                        column(6,
                                tags$div(id="test_1", style="width:100%;height:200px;"),  # Specify the div for the chart.
                                deliverChart(div_id = "test_1"),  # Deliver the plotting
                                
@@ -61,7 +133,7 @@ ui <- dashboardPage(skin = 'purple',
 
 
 
-
+####    server    ####
 server <- function(input, output,  session){
   
   observeEvent(input$selectEstado, {
@@ -99,5 +171,5 @@ server <- function(input, output,  session){
     
   })
 }
-
+####    fim       ####
 shinyApp(ui, server)
