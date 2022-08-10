@@ -32,26 +32,25 @@ for(i in 1 : nrow(continente@data)){
 }
 
 # Organizações 
-otan <- c()
-pac_varsovia <- c()
-onu <- c()
-g7 <- c()
+otan <- c("eua","canada","reino unido", "franca","alemanha","portugal", espanha, italia, paises baixos, belgica, repu tcheca, eslovaquia, ungria, polonia)
+pac_varsovia <- c(alemanha orient, urss, lest europeu, cuba)
+onu <- c(-republi extrem)
+g7 <- c(reino unido, franca, russia, canada, italia, alemanha, japao)
 g20 <- c()
-unicef <- c()
-unesco <- c()
-oms <- c()
+unicef <- c(onu)
+unesco <- c(onu)
+oms <- c(onu)
 
 # Acontecimentos
-gf <- c()
-guerra1 <- c()
-guerra2 <- c()
-aliados <- c()
-eixo <- c()
+gf <- c(1945-1991)
+guerra1 <- c(14, 18, alemanha, italia, franca, reino unido, eua, europa, russia)
+guerra2 <- c(39, 45, )
+aliados <- c(eua, urss, franca, reino unido)
+eixo <- c(alemanha, italia, japao)
 
 # Sistemas politicos economicos
-capital <- c()
-sociali <- c()
-republi <- c()
+capital <- c(pais capital)
+sociali <- c(urss, china, cuba, coreia do norte, angola)
 
 # Blocos econômicos
 omc <- c()
@@ -60,13 +59,10 @@ an <- c()
 lesteasiatico <-c()
 
 # Globalização
-paises_g <- c()
-porcentual <- c()
-rank <- c()
+cidadesG <- c()
 
 # Tipos de capitais
-expec <- c()
-produ <- c()
+expec <- c(conteudo)
+produ <- c(conteudo)
 
-# Ordem econômica
-bancos <- c()
+
