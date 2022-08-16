@@ -6,80 +6,22 @@ library("shinythemes")
 library("shinydashboard")
 library("leaflet")
 library('rgdal')
-####    dados     ####
 
-# Poligonos dos mapas
-mundo <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/mundo.shp')
+
+
+####    Mapas     ####
+mundo      <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/mundo.shp')
 continente <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/continentes/Continents.shp')
 
-# Mapas
 mapaPaises <- leaflet(mundo) %>% addTiles()
 mapaContin <- leaflet(continente) %>% addTiles()
 
-# Cores
-cor = c()
-nrow(continente@data)
+mapaOnu    <- leaflet(mundo) %>% 
+  addTiles() %>%
+  addPolygons(color = corOnu,
+              label = mundo@data$SOVEREIGN)
+mapaOnu
 
-for(i in 1 : nrow(continente@data)){
-  
-  if(continente@data$JUNK_ID[i] == 1){
-    cor[i] = "green"
-  }else if(continente@data$JUNK_ID[i] == 2){
-    cor[i] = "red"
-  }else if(continente@data$JUNK_ID[i] == 3){
-    cor[i] = "purple"
-  }else if(continente@data$JUNK_ID[i] == 4){
-    cor[i] = "yellow"
-  }else if(continente@data$JUNK_ID[i] == 5){
-    cor[i] = "blue"
-  }else if(continente@data$JUNK_ID[i] == 6){
-    cor[i] = "grey"
-  }else if(continente@data$JUNK_ID[i] == 7){
-    cor[i] = "black"
-  }else if(continente@data$JUNK_ID[i] == 8){
-    cor[i] = "orange"
-  }
-}
-
-# Organizações 
-otan <- c()
-pac_varsovia <- c()
-onu <- c()
-g7 <- c()
-g20 <- c()
-unicef <- c()
-unesco <- c()
-oms <- c()
-
-# Acontecimentos
-gf <- c()
-guerra1 <- c()
-guerra2 <- c()
-aliados <- c()
-eixo <- c()
-
-# Sistemas politicos economicos
-capital <- c()
-sociali <- c()
-republi <- c()
-
-# Blocos econômicos
-omc <- c()
-eurOcidental <-c()
-an <- c()
-lesteasiatico <-c()
-
-# Globalização
-paises_g <- c()
-porcentual <- c()
-rank <- c()
-
-# Tipos de capitais
-expec <- c()
-produ <- c()
-
-# Ordem econômica
-bancos <- c()
 
 ####    ui        ####
 temas <- c('tema1', 'tema2', 'tema3', 'tema4')
@@ -103,26 +45,24 @@ ui <- dashboardPage(skin = 'purple',
                       loadEChartsTheme('macarons'),
                       loadEChartsTheme('jazz'),
                       
-                      fluidRow(
-                        tags$h1('GEOPOLITICA')
-                      ),
+                     
                       
                       fluidRow(
-                        column(6,
-                               leaflet(continente) %>% addTiles() %>% addPolygons(color = cor)
+                        column(5,
+                               leafletOutput(outputId = "mapa")
                         ),
-                        column(6,
-                               tags$div(id="test_1", style="width:100%;height:200px;"),  # Specify the div for the chart.
-                               deliverChart(div_id = "test_1"),  # Deliver the plotting
+                        column(7,
+                               tags$div(id="graph_pie", style="width:100%;height:200px;"),  # Specify the div for the chart.
+                               deliverChart(div_id = "graph_pie"),  # Deliver the plotting
                                
-                               tags$div(id="test_3", style="width:100%;height:300px;"),
-                               deliverChart(div_id = "test_3")
+                               tags$div(id="graph_bar", style="width:100%;height:300px;"),
+                               deliverChart(div_id = "graph_bar")
                         )
                       ),
                       
                       fluidRow(
-                               tags$div(id="test_2", style="width:100%;height:300px;"),
-                               deliverChart(div_id = "test_2")
+                               tags$div(id="graph_line", style="width:100%;height:300px;"),
+                               deliverChart(div_id = "graph_line")
                       ),
                       
                     ),
@@ -152,20 +92,13 @@ server <- function(input, output,  session){
     
    
   
-  renderPieChart(div_id = "test_1", data = dat_1, theme = tema, radius = "90%")
+  renderPieChart(div_id = "graph_pie", data = dat_1, theme = tema, radius = "90%")
   
-  renderLineChart(div_id = "test_2", theme = tema, data = dat_2)
+  renderLineChart(div_id = "graph_line", theme = tema, data = dat_2)
   
-  renderBarChart(div_id = "test_3", grid_left = '3%', data = dat_2, font.size.legend=15, show.tools=T, show.legend = T)
+  renderBarChart(div_id = "graph_bar", grid_left = '3%', data = dat_2, font.size.legend=15, show.tools=T, show.legend = T)
   
-  #grid_right, padrao eh 4% #grid_top padrao eh 16% #grid_bottom 3% #
-  
-  renderBarChart(div_id = "test_4", theme = tema, direction = "vertical", grid_left = "10%", data = dat_2)
-  
-  renderGauge(div_id = "test_5", gauge_name = "Meta de vendas", rate = 59.9, theme = tema)
-  
-  renderWordcloud("test_6", data = palavras, grid_size = 10, sizeRange = c(20, 50))
-  
+  output$mapa = renderLeaflet(mapaOnu)
   
   
     
