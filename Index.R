@@ -10,7 +10,7 @@ library('rgdal')
 
 
 ####    Mapas     ####
-mundo      <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/mundo.shp')
+mundo      <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/mundoGeopolitico.shp')
 continente <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/continentes/Continents.shp')
 
 mapaPaises <- leaflet(mundo) %>% addTiles()

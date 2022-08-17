@@ -5,6 +5,7 @@ library('stringr')
 library('dplyr')
 library('unvotes')
 library('lubridate')
+library('sf')
 
 
 
@@ -350,7 +351,6 @@ for(i in 1 : nrow(mundo@data)){
   }else{corOnu[i] = "grey"}
 }
 
-
-#write.dcf(mundo, file = "mundoGeopolitico.shp")
+#shape <- writeOGR(mundo, dsn = ".", layer = "mundoGeopolitico", driver = 'ESRI Shapefile', overwrite_layer = TRUE)
 #write.csv2(cidadesG, file = "cidadesGlobalizadas.csv")
 rm(i, cont, mundo, cidadesG)
