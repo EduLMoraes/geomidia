@@ -206,15 +206,23 @@ guerra1 = c("1914 - 1918",'France', 'United Kingdom', 'Russia',
              'Germany', 'Hungary', 'Turkey',
             'Bulgaria', 'Luxembourg')
 guerra2 = c("1939 - 1945", "United States", "Russia", "France", "United Kingdom",
-     "Germany", "Italy", "Japan")
+     "Germany", "Italy", "Japan", 'Canada', 'Brazil', 'Australia', 'China', 'Netherlands')
                               
 guerra1 <- sort(guerra1) %>% as.data.frame()
 guerra2 <- sort(guerra2) %>% as.data.frame() 
 
 aliados <- c("United States", "Russia", "France", "United Kingdom")
 eixo    <- c("Germany", "Italy", "Japan")
+triEntente <- c('France', 'Russia', 'United Kingdom')
+triAlianca <- c('Germany', 'Hungary', 'Italy')
+impCentrais <- c('Germany', 'Hungary', 'Turkey', 'Bulgaria')
+
 aliados <- sort(aliados)
 eixo    <- sort(eixo)
+triEntente <- sort(triEntente)
+triAlianca <- sort(triAlianca)
+impCentrais <- sort(impCentrais)
+
 
 
 cont$v9 <- cont$v9+1
@@ -250,8 +258,31 @@ for(i in 1 : nrow(mundo@data)){
     if(cont$v9 > 3){cont$v9 = 1}
   }
 }
+# Triplice aliança ou entente
+for(i in 1 : nrow(mundo@data)){
+  if(mundo@data$CNTRY_NAME[i] == triAlianca[cont$v9]){
+    mundo@data$TRIPLICE[i] = "Aliança"
+    cont$v9 = cont$v9+1
+    if(cont$v9 > 3){cont$v9 = 1}
+  } else{mundo@data$TRIPLICE[i] = "F"}
+}
+for(i in 1 : nrow(mundo@data)){
+  if(mundo@data$CNTRY_NAME[i] == triEntente[cont$v9]){
+    mundo@data$TRIPLICE[i] = "Entente"
+    cont$v9 = cont$v9+1
+    if(cont$v9 > 3){cont$v9 = 1}
+  }
+}
+# Imperio Central
+for(i in 1 : nrow(mundo@data)){
+  if(mundo@data$CNTRY_NAME[i] == impCentrais[cont$v9]){
+    mundo@data$IMP_CENTRAIS[i] = "T"
+    cont$v9 = cont$v9+1
+    if(cont$v9 > 4){cont$v9 = 1}
+  } else{mundo@data$IMP_CENTRAIS[i] = "F"}
+}
 
-rm(guerra1, guerra2, i, aliados, eixo)
+rm(guerra1, guerra2, i, aliados, eixo, triAlianca, triEntente, impCentrais)
 guerraFria <- c("Periodo de 1945 até 1991")
 
 #https://brasilescola.uol.com.br/historiag/segunda-guerra-mundial.htm
@@ -351,6 +382,8 @@ for(i in 1 : nrow(mundo@data)){
   }else{corOnu[i] = "grey"}
 }
 
-#shape <- writeOGR(mundo, dsn = ".", layer = "mundoGeopolitico", driver = 'ESRI Shapefile', overwrite_layer = TRUE)
+#writeOGR(mundo, dsn = ".", layer = "mundoGeopolitico", driver = 'ESRI Shapefile', overwrite_layer = TRUE)
 #write.csv2(cidadesG, file = "cidadesGlobalizadas.csv")
 rm(i, cont, mundo, cidadesG)
+
+
