@@ -1,31 +1,31 @@
-"";"X1949";"X1959";"X1969";"X1979";"X1989";"X1999";"X2009";"X2019";"X2022"
-"1";"Belgium";"Belgium";"Belgium";"Belgium";"Belgium";"Belgium";"Belgium";"Belgium";"Albania"
-"2";"Canada";"Canada";"Canada";"Canada";"Canada";"Canada";"Canada";"Canada";"Germany"
-"3";"Denmark";"Denmark";"Denmark";"Denmark";"Denmark";"Denmark";"Denmark";"Denmark";"Belgium"
-"4";"United States";"United States";"United States";"United States";"United States";"United States";"United States";"United States";"Bulgaria"
-"5";"France";"France";"Iceland";"Iceland";"Iceland";"Iceland";"Iceland";"Iceland";"Canada"
-"6";"Iceland";"Iceland";"Italy";"Italy";"Italy";"Italy";"Italy";"Italy";"Czechia"
-"7";"Italy";"Italy";"Luxembourg";"Luxembourg";"Luxembourg";"Luxembourg";"Luxembourg";"Luxembourg";"Croatia"
-"8";"Luxembourg";"Luxembourg";"Norway";"Norway";"Norway";"Norway";"Norway";"Norway";"Denmark"
-"9";"Norway";"Norway";"Netherlands";"Netherlands";"Netherlands";"Netherlands";"Netherlands";"Netherlands";"Slovakia"
-"10";"Netherlands";"Netherlands";"Portugal";"Portugal";"Portugal";"Portugal";"Portugal";"Portugal";"Slovenia"
-"11";"Portugal";"Portugal";"United Kingdom";"United Kingdom";"United Kingdom";"United Kingdom";"United Kingdom";"United Kingdom";"Spain"
-"12";"United Kingdom";"United Kingdom";"Greece";"Greece";"Greece";"Greece";"Greece";"Greece";"United States"
-"13";"";"Greece";"Turkey";"Turkey";"Turkey";"Turkey";"Turkey";"Turkey";"Estonia"
-"14";"";"Turkey";"";"";"Spain";"Spain";"Spain";"Spain";"France"
-"15";"";"";"";"";"";"France";"France";"France";"Greece"
-"16";"";"";"";"";"";"Poland";"Poland";"Poland";"Hungary"
-"17";"";"";"";"";"";"Hungary";"Hungary";"Hungary";"Iceland"
-"18";"";"";"";"";"";"Czechia";"Czechia";"Czechia";"Italy"
-"19";"";"";"";"";"";"";"Bulgaria";"Bulgaria";"Latvia"
-"20";"";"";"";"";"";"";"Estonia";"Estonia";"Lithuania"
-"21";"";"";"";"";"";"";"Latvia";"Latvia";"Luxembourg"
-"22";"";"";"";"";"";"";"Lithuania";"Lithuania";"North Macedonia"
-"23";"";"";"";"";"";"";"Romania";"Romania";"Montenegro"
-"24";"";"";"";"";"";"";"Slovakia";"Slovakia";"Norway"
-"25";"";"";"";"";"";"";"Slovenia";"Slovenia";"Netherlands"
-"26";"";"";"";"";"";"";"Albania";"Albania";"Poland"
-"27";"";"";"";"";"";"";"Croatia";"Croatia";"Portugal"
-"28";"";"";"";"";"";"";"";"Montenegro";"United Kingdom"
-"29";"";"";"";"";"";"";"";"";"Romania"
-"30";"";"";"";"";"";"";"";"";"Turkey"
+,X1949,X1959,X1969,X1979,X1989,X1999,X2009,X2019,X2022
+1,Belgium,Belgium,Belgium,Belgium,Belgium,Belgium,Belgium,Belgium,Albania
+2,Canada,Canada,Canada,Canada,Canada,Canada,Canada,Canada,Germany
+3,Denmark,Denmark,Denmark,Denmark,Denmark,Denmark,Denmark,Denmark,Belgium
+4,United States,United States,United States,United States,United States,United States,United States,United States,Bulgaria
+5,France,France,Iceland,Iceland,Iceland,Iceland,Iceland,Iceland,Canada
+6,Iceland,Iceland,Italy,Italy,Italy,Italy,Italy,Italy,Czech Republic
+7,Italy,Italy,Luxembourg,Luxembourg,Luxembourg,Luxembourg,Luxembourg,Luxembourg,Croatia
+8,Luxembourg,Luxembourg,Norway,Norway,Norway,Norway,Norway,Norway,Denmark
+9,Norway,Norway,Netherlands,Netherlands,Netherlands,Netherlands,Netherlands,Netherlands,Slovakia
+10,Netherlands,Netherlands,Portugal,Portugal,Portugal,Portugal,Portugal,Portugal,Slovenia
+11,Portugal,Portugal,United Kingdom,United Kingdom,United Kingdom,United Kingdom,United Kingdom,United Kingdom,Spain
+12,United Kingdom,United Kingdom,Greece,Greece,Greece,Greece,Greece,Greece,United States
+13,,Greece,Turkey,Turkey,Turkey,Turkey,Turkey,Turkey,Estonia
+14,,Turkey,,,Spain,Spain,Spain,Spain,France
+15,,,,,,France,France,France,Greece
+16,,,,,,Poland,Poland,Poland,Hungary
+17,,,,,,Hungary,Hungary,Hungary,Iceland
+18,,,,,,Czech Republic,Czech Republic,Czech Republic,Italy
+19,,,,,,,Bulgaria,Bulgaria,Latvia
+20,,,,,,,Estonia,Estonia,Lithuania
+21,,,,,,,Latvia,Latvia,Luxembourg
+22,,,,,,,Lithuania,Lithuania,Macedonia
+23,,,,,,,Romania,Romania,Serbia & Montenegro
+24,,,,,,,Slovakia,Slovakia,Norway
+25,,,,,,,Slovenia,Slovenia,Netherlands
+26,,,,,,,Albania,Albania,Poland
+27,,,,,,,Croatia,Croatia,Portugal
+28,,,,,,,,Serbia & Montenegro,United Kingdom
+29,,,,,,,,,Romania
+30,,,,,,,,,Turkey

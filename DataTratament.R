@@ -12,21 +12,9 @@ library('sf')
 #### Dados                          ####
 
 mundo <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/mundo.shp')
+certiMundo <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/mundo.shp')
 continente <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/continentes/Continents.shp')
-mundo@data <- mundo@data %>% arrange(SOVEREIGN)
-
-
-dat_1 <- c(rep("Tipo A", 8),
-           rep("Tipo B", 5),
-           rep("Tipo C", 1))
-dat_1
-
-dat_2 <- data.frame(c(1, 2, 3, 1),
-                    c(2, 4, 6, 6),
-                    c(3, 2, 7, 5))
-
-names(dat_2) <- c("Tipo A", "Tipo B", "Tipo C")
-row.names(dat_2) <- c("Tempo 1", "Tempo 2", "Tempo 3", "Tempo 4")
+mundo@data <- mundo@data %>% arrange(CNTRY_NAME)
 
 cont = data.frame(v1 = c(19),
                   v2 = c(17),
@@ -37,13 +25,14 @@ cont = data.frame(v1 = c(19),
                   v7 = c(4),
                   v8 = c(3),
                   v9 = c(1))
-rm(continente, dat_2, dat_1)
+rm(continente)
 
 #### Organizações                   ####
 
-otan <- read.csv2('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/paisesOtan.csv')
+otan <- read.csv2('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/paisesOtan.csv', sep = ",", header = T)
 pac_varsovia <- read.csv2('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/pac_varsovia.csv')
 pac_varsovia <- pac_varsovia %>% arrange(X1955)
+pac_varsovia <- pac_varsovia[-3,]
 
 otan <- data.frame(sort(otan$X1949),
                    sort(otan$X1959),
@@ -55,7 +44,7 @@ otan <- data.frame(sort(otan$X1949),
                    sort(otan$X2019),
                    sort(otan$X2022))
 
-
+cont$v9 = 1
 # otan
 for(i in 1 : nrow(mundo@data)){
   if(mundo@data$CNTRY_NAME[i] == otan$sort.otan.X1949.[cont$v1]){
@@ -112,14 +101,19 @@ for(i in 1 : nrow(mundo@data)){
     if(cont$v9 > 30){cont$v9 = 1}
   } else{ mundo@data$OTAN_2022[i] = "F"}
 }
-
+cont$v9 = 1
 # pacto
 for(i in 1 : nrow(mundo@data)){
   if(mundo@data$CNTRY_NAME[i] == pac_varsovia$X1955[cont$v9]){
     mundo@data$pacto_1955_1991[i] = "T"
     cont$v9 = cont$v9 + 1
-    if(cont$v9 > 7){cont$v9 = 1}
-  } else{ mundo@data$pacto_1955_1991[i] = "F"}  
+    if(cont$v9 > 6){cont$v9 = 1}
+  } else{mundo@data$pacto_1955_1991[i] = "F"}  
+  if(mundo@data$CNTRY_NAME[i] == "Czech Republic"){
+    mundo@data$pacto_1955_1991[i] = "T"
+  } else if(mundo@data$CNTRY_NAME[i] == "Slovakia"){
+    mundo@data$pacto_1955_1991[i] = "T"
+  }
 }
 
 
@@ -226,23 +220,25 @@ impCentrais <- sort(impCentrais)
 
 
 cont$v9 <- cont$v9+1
+i=0
 # primeira guerra
 for(i in 1 : nrow(mundo@data)){
   if(mundo@data$CNTRY_NAME[i] == guerra1$.[cont$v9]){
     mundo@data$GM1[i] = "T"
     cont$v9 = cont$v9+1
     if(cont$v9 > 23){cont$v9 = 2}
-  } else{mundo@data$GM1[i] = "F"}
+  }else{mundo@data$GM1[i] = "F"}
 }
+i=0
 # segunda guerra
 for(i in 1 : nrow(mundo@data)){
   if(mundo@data$CNTRY_NAME[i] == guerra2$.[cont$v9]){
     mundo@data$GM2[i] = "T"
     cont$v9 = cont$v9+1
-    if(cont$v9 > 8){cont$v9 = 1}
+    if(cont$v9 > 13){cont$v9 = 1}
   } else{mundo@data$GM2[i] = "F"}
 }
-
+i=0
 # aliado ou eixo
 for(i in 1 : nrow(mundo@data)){
   if(mundo@data$CNTRY_NAME[i] == aliados[cont$v9]){
@@ -365,25 +361,28 @@ cidadesG <- data.frame(cidade = c("London", "New York", "Paris",
 expec <- c("conteudo")
 produ <- c("conteudo")
 #### Cores                          ####
-corOnu = c()
-corCap = c()
-corSoc = c()
-corAli = c()
-corEix = c()
-corG20 = c()
-corG7  = c()
-corOta = c()
-corPac = c()
 
 for(i in 1 : nrow(mundo@data)){
-  
-  if(mundo@data$ONU[i] == "T"){
-    corOnu[i] = "blue"
-  }else{corOnu[i] = "grey"}
+  if(mundo@data$GM1[i] == "T"){ mundo@data$corGM1[i] = "red" }else{mundo@data$corGM1[i] = ""}
+  if(mundo@data$GM2[i] == "T"){ mundo@data$corGM2[i] = "red" }else{mundo@data$corGM2[i] = ""}
+  if(mundo@data$G7[i] == "T"){ mundo@data$corG7[i] = "yellow" }else{mundo@data$corG7[i] = "black"}
+  if(mundo@data$ONU[i] == "T"){ mundo@data$corOnu[i] = "blue" }else{mundo@data$corOnu[i] = "grey"}
+  if(mundo@data$G20[i] == "T"){ mundo@data$corG20[i] = "yellow" }else{ mundo@data$corG20[i] = "black"}
+  if(mundo@data$IMP_CENTRAIS[i] == "T"){ mundo@data$corIMP[i] = "red" }else{mundo@data$corIMP[i] = ""}
+  if(mundo@data$SIS_POL[i] == "capital"){ mundo@data$corSis[i] = "blue" }else{mundo@data$corSis[i] = "red"}
+  if(mundo@data$OTAN_1949[i] == "T"){ mundo@data$corOTAN_49[i] = "white" }else{mundo@data$corOTAN_49[i] = ""}
+  if(mundo@data$OTAN_2022[i] == "T"){ mundo@data$corOTAN_22[i] = "white" }else{mundo@data$corOTAN_22[i] = ""}
+  if(mundo@data$pacto_1955_1991[i] == "T"){ mundo@data$corPacto[i] = "red" }else{mundo@data$corPacto[i] = ""}
+  if(mundo@data$LADO[i] == "Aliados"){ mundo@data$corLado[i] = "blue" }else if(mundo@data$LADO[i] == "Eixo"){ mundo@data$corLado[i] = "red" }else{mundo@data$corLado[i] = ""}
+  if(mundo@data$TRIPLICE[i] == "Aliança"){ mundo@data$corTRI[i] = "blue" }else if(mundo@data$TRIPLICE[i] == "Entente"){mundo@data$corTRI[i] = "red"}else{mundo@data$corTRI[i] = ""}
 }
 
-#writeOGR(mundo, dsn = ".", layer = "mundoGeopolitico", driver = 'ESRI Shapefile', overwrite_layer = TRUE)
-#write.csv2(cidadesG, file = "cidadesGlobalizadas.csv")
-rm(i, cont, mundo, cidadesG)
+#### Final                          ####
+mundo@data <- certiMundo@data %>%
+  inner_join(mundo@data, by = c('CNTRY_NAME'='CNTRY_NAME'))
+mundo@data <- mundo@data[, -c(14:27)]
 
-
+writeOGR(mundo, dsn = ".", layer = "mundoGeopolitico", driver = 'ESRI Shapefile', overwrite_layer = TRUE)
+write.csv2(cidadesG, file = "cidadesGlobalizadas.csv")
+write.csv2(onuFundos, file = "onuFundos.csv")
+rm(i, cont, mundo, cidadesG, onuFundos, expec, guerraFria, produ, certiMundo)
