@@ -1,0 +1,54 @@
+#sidebar_button {
+    height: 55px;
+}
+section.sidebar .shiny-bound-input.action-button, section.sidebar .shiny-bound-input.action-link {
+    margin: auto;
+    display:block;
+}
+.btn-danger {
+    background-color: #d1351b;
+    border-color: #d1351b;
+    height: 55px;
+    width: 300px;
+    border-radius: 0;
+    position: relative;
+    font-size: 18px;
+}
+.skin-red .main-header .navbar {
+    background-color: rgb(177, 63, 48)5, 123, 0;
+}
+#mapa {
+    display: flex;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+    padding: 0;
+}
+.main-header {
+    position: relative;
+    padding: 0;
+}
+.content-wrapper, .main-footer, .right-side {
+    position: relative;
+}
+section.content{
+    padding: 0;
+    border: 0;
+    margin: 0;
+    background-color: whitesmoke;
+}
+.treeview:hover{
+    background-color: #070707;
+    font-size: 25px
+}
+.treeview{
+    font-size: 24px;
+    min-height: 40  px;
+}
+.treeview::marker{
+    color: transparent;
+}
