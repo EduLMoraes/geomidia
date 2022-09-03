@@ -1,6 +1,6 @@
 ####    Mapas     ####
-mundo      <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/mundoGeopolitico.shp')
-continente <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/continentes/Continents.shp')
+mundo      <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/geomidia/geodata/mundo/mundoGeopolitico.shp')
+continente <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/geomidia/geodata/continentes/Continents.shp')
 
 ## MAPAS GENÉRICOS ##
 mapaPaises <- leaflet(mundo) %>% setView(lat=0, lng=0, zoom = 2) %>% addTiles(options = tileOptions(minZoom = 2, maxZoom = 10, maxNativeZoom = 5), urlTemplate = "http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}&s=Ga")
@@ -55,7 +55,7 @@ mapaAli    <- mapaPaises %>%
 
 
 ####    Graficos  ####
-tamanho <- read.csv2("C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/rankingArea.csv")
+tamanho <- read.csv2("C:/Users/Elvins Moraes/Desktop/edu/geomidia/geodata/mundo/rankingArea.csv")
 ranking <- tamanho[,-c(1:2)]
 ranking <- as.data.frame(ranking)
 row.names(ranking) <- tamanho$Paises
