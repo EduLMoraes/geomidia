@@ -11,9 +11,9 @@ library('sf')
 
 #### Dados                          ####
 
-mundo <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/mundo.shp')
-certiMundo <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/mundo.shp')
-continente <- readOGR('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/continentes/Continents.shp')
+mundo <- readOGR('geodata/mundo/mundo.shp')
+certiMundo <- readOGR('geodata/mundo/mundo.shp')
+continente <- readOGR('geodata/continentes/Continents.shp')
 mundo@data <- mundo@data %>% arrange(CNTRY_NAME)
 
 cont = data.frame(v1 = c(19),
@@ -29,8 +29,8 @@ rm(continente)
 
 #### Organizações                   ####
 
-otan <- read.csv2('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/paisesOtan.csv', sep = ",", header = T)
-pac_varsovia <- read.csv2('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/pac_varsovia.csv')
+otan <- read.csv2('https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/geodata/mundo/paisesOtan.csv', sep = ",", header = T)
+pac_varsovia <- read.csv2('https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/geodata/mundo/pac_varsovia.csv', sep = ";", header = T)
 pac_varsovia <- pac_varsovia %>% arrange(X1955)
 pac_varsovia <- pac_varsovia[-3,]
 
@@ -126,11 +126,13 @@ rm(otan, pac_varsovia, i)
 
 
 abrev_pais  <- mundo@data
-onuData     <- read.csv2('C:/Users/Elvins Moraes/Desktop/edu/Projeto - Geopolitica/geodata/mundo/onuData.csv', header= T, sep=",")
+onuData     <- read.csv2('https://github.com/EduardoMoreaes/geomidia/raw/master/geodata/mundo/onuData.csv', sep = ",", header = T)
 paises      <- onuData %>% 
                 distinct(Major.trading.partners)
+paises      <- paises[-1,] %>% as.data.frame(paises)
 onuPaises   <- abrev_pais %>%
-                inner_join(paises, by = c('SOVEREIGN'='Major.trading.partners'))
+                inner_join(paises, by = c('LONG_NAME'='.'))
+
 
 
 
@@ -171,7 +173,7 @@ g20 <- c("South Africa", "Germany", "Saudi Arabia", "Argentina", "Australia",
          "Brazil", "Canada", "China", "South Korea", "United States", "France", "India",
          "Indonesia", "Italy", "Japan", "Mexico", "United Kingdom", "Russia", "Turkey")
 g20 <- sort(g20)
-
+cont$v9 = 1
 for(i in 1 : nrow(mundo@data)){
   if(mundo@data$CNTRY_NAME[i] == g7[cont$v9]){
     mundo@data$G7[i] = "T"
@@ -381,8 +383,9 @@ for(i in 1 : nrow(mundo@data)){
 mundo@data <- certiMundo@data %>%
   inner_join(mundo@data, by = c('CNTRY_NAME'='CNTRY_NAME'))
 mundo@data <- mundo@data[, -c(14:27)]
-
+return(mundo@data)
 writeOGR(mundo, dsn = ".", layer = "mundoGeopolitico", driver = 'ESRI Shapefile', overwrite_layer = TRUE)
 write.csv2(cidadesG, file = "cidadesGlobalizadas.csv")
 write.csv2(onuFundos, file = "onuFundos.csv")
+
 rm(i, cont, mundo, cidadesG, onuFundos, expec, guerraFria, produ, certiMundo)

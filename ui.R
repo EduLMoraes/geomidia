@@ -4,11 +4,11 @@ skin <- 'red'
 gm <- c("Guerras & Conflitos", "1ª Guerra Mundial" = 1, "2ª Guerra Mundial" = 2, "Guerra Fria" = 3)
 
 ui <- dashboardPage(skin = skin,
-                    title = "GEOPOLÍTICA",
+                    title = "GEOPMÍDIA",
                     
      # HEADER     -------------------------------------------------------
                     dashboardHeader(
-                      title = "GEOPOLÍTICA",
+                      title = "GEOMÍDIA",
                       titleWidth = 300
                     ),
      # SIDEBAR    -------------------------------------------------------               
@@ -24,30 +24,27 @@ ui <- dashboardPage(skin = skin,
                       br(),
                       # Guerra             -----
                       menuItem("GUERRA", tabName = "antimicrobials", icon = icon("fire"),
-                        menuItem( "1ª GUERRA MUNDIAL \n (1914-1918)",
-                                actionButton(inputId = "gm1", label = "Alianças Militares", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
+                        menuItem("1ª GUERRA MUNDIAL \n (1914-1918)",
+                                actionButton(inputId = "gm1", label = "A Grande Guerra", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
                                 actionButton(inputId = "imp", label = "Impérios Centrais", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
-                                actionButton(inputId = "ali", label = "Alianças Militares", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;")
+                                actionButton(inputId = "ali", label = "Aliados", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;")
                         ),
                         menuItem("2ª GUERRA MUNDIAL (1939-1945)",
-                                actionButton(inputId = "gm2", label = "Alianças Militares", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
+                                actionButton(inputId = "gm2", label = "A Segunda Guerra Mundial", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
                                 actionButton(inputId = "lsg", label = "Lados da Segunda Guerra", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;")
                         ),
-                        menuItem("GUERRA FRIA (1945-1991)")
+                        menuItem("GUERRA FRIA (1945-1991)",
+                                actionButton(inputId = "GF", label = "O que foi", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
+                                actionButton(inputId = "otan", label = "OTAN", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
+                                actionButton(inputId = "pct", label = "Pacto de Varsóvia", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;")
+                        )
                       ),
                       br(),
                       # Organização        -----
-                      menuItem("ORGANIZÇOES", tabName = "organizacoes", icon = icon("cog", lib = "glyphicon"),
+                      menuItem("ORGANIZÇÕES", tabName = "organizacoes", icon = icon("cog", lib = "glyphicon"),
                                actionButton(inputId = "onu", label = "ONU", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
                                actionButton(inputId = "gst", label = "G7", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
                                actionButton(inputId = "gvt", label = "G20", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;")
-                      ),
-                      br(),
-                      # Alianças Militares ----
-                      menuItem("ALIANÇAS MILITARES", tabName = "aliancas", icon = icon("list-alt"),
-                               actionButton(inputId = "otan", label = "OTAN", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
-                               actionButton(inputId = "pct", label = "Pacto de Varsóvia", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;")
-                               
                       ),
                       br(),
                       # Sistemas Políticos ----
@@ -79,12 +76,12 @@ ui <- dashboardPage(skin = skin,
                       
                       
                       fluidRow(
-                        column(3,
+                        column(4,
                                textOutput(outputId = "GraficoPie"),
                                tags$div(id="graph_pie", style="width:100%;height:200px;"),  # Specify the div for the chart.
                                deliverChart(div_id = "graph_pie"),
                         ),
-                        column(5,
+                        column(4,
                                # Deliver the plotting
                                
                                textOutput(outputId = "GraficoBar"),
