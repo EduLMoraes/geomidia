@@ -25,7 +25,6 @@ cont = data.frame(v1 = c(19),
                   v7 = c(4),
                   v8 = c(3),
                   v9 = c(1))
-rm(continente)
 
 #### Organizações                   ####
 
@@ -173,7 +172,7 @@ g20 <- c("South Africa", "Germany", "Saudi Arabia", "Argentina", "Australia",
          "Brazil", "Canada", "China", "South Korea", "United States", "France", "India",
          "Indonesia", "Italy", "Japan", "Mexico", "United Kingdom", "Russia", "Turkey")
 g20 <- sort(g20)
-cont$v9 = 1
+
 for(i in 1 : nrow(mundo@data)){
   if(mundo@data$CNTRY_NAME[i] == g7[cont$v9]){
     mundo@data$G7[i] = "T"
@@ -384,8 +383,8 @@ mundo@data <- certiMundo@data %>%
   inner_join(mundo@data, by = c('CNTRY_NAME'='CNTRY_NAME'))
 mundo@data <- mundo@data[, -c(14:27)]
 return(mundo@data)
-writeOGR(mundo, dsn = ".", layer = "mundoGeopolitico", driver = 'ESRI Shapefile', overwrite_layer = TRUE)
-write.csv2(cidadesG, file = "cidadesGlobalizadas.csv")
-write.csv2(onuFundos, file = "onuFundos.csv")
+writeOGR(mundo, dsn = "./geodata/mundo", layer = "mundoGeopolitico", driver = 'ESRI Shapefile', overwrite_layer = TRUE)
+write.csv2(cidadesG, file = "./geodata/mundo/cidadesGlobalizadas.csv")
+write.csv2(onuFundos, file = "./geodata/mundo/onuFundos.csv")
 
-rm(i, cont, mundo, cidadesG, onuFundos, expec, guerraFria, produ, certiMundo)
+rm(i, cont, cidadesG, onuFundos, expec, guerraFria, produ, certiMundo)

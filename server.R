@@ -1,9 +1,6 @@
 ####    Mapas     ####
 
 source("DataTratament.R")
-a <- mundo@data
-mundo      <- readOGR('https://github.com/EduardoMoreaes/geomidia/blob/master/geodata/mundo/mundoGeopolitico.shp?raw=true')
-continente <- readOGR('https://github.com/EduardoMoreaes/geomidia/blob/master/geodata/continentes/Continents.shp?raw=true')
 
 ## MAPAS GENÉRICOS ##
 mapaPaises <- leaflet(mundo) %>% setView(lat=0, lng=0, zoom = 2) %>% addTiles(options = tileOptions(minZoom = 2, maxZoom = 10, maxNativeZoom = 5), urlTemplate = "http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}&s=Ga")
@@ -62,7 +59,7 @@ mapaAli    <- mapaPaises %>%
   #     GRAFICO PIZZA     ----
       primeira_guerra_parti <- mundo@data$GM1 %>% as.data.frame()
       segunda_guerra_parti  <- mundo@data$GM2 %>% as.data.frame()
-      guerra_fria           <- data.frame(mundo@data$OTAN_195, mundo@data$p_1955_)
+      guerra_fria           <- data.frame(mundo@data$OTAN_195, mundo@data$pacto_1955_1991)
       grupo_sete            <- mundo@data$G7 %>% as.data.frame()
       grupo_vinte           <- mundo@data$G20 %>% as.data.frame()
       sistemas_politicos    <- mundo@data$SIS_POL %>% as.data.frame()
@@ -74,7 +71,7 @@ mapaAli    <- mapaPaises %>%
         if(grupo_sete$.[i] == "T"){grupo_sete$.[i] = "Pertencente"}else{grupo_sete$.[i] = "Não pertencente"}
         if(grupo_vinte$.[i] == "T"){grupo_vinte$.[i] = "Pertencente"}else{grupo_vinte$.[i] = "Não pertencente"}
         if(guerra_fria$mundo.data.OTAN_195[i] == "T"){guerra_fria$Alianca[i] = "OTAN"} else{guerra_fria$Alianca[i] = "Outras Alianças"}
-          if(guerra_fria$mundo.data.p_1955_[i] == "T"){guerra_fria$Alianca[i] = "Pacto"}
+          if(guerra_fria$mundo.data.pacto_1955_1991[i] == "T"){guerra_fria$Alianca[i] = "Pacto"}
         if(onu$.[i] == "T"){onu$.[i] = "Pertencente"}else{onu$.[i] = "Não Pertencente"}
         if(primeira_guerra_parti$.[i] == "T"){primeira_guerra_parti$.[i] = "Participante"}else{primeira_guerra_parti$.[i] = "Não Participante"}
         if(segunda_guerra_parti$.[i] == "T"){segunda_guerra_parti$.[i] = "Participante"}else{segunda_guerra_parti$.[i] = "Não Participou"}

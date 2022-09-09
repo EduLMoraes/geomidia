@@ -1,21 +1,23 @@
 #sidebar_button {
     height: 55px;
+    background-color: black;
 }
 section.sidebar .shiny-bound-input.action-button, section.sidebar .shiny-bound-input.action-link {
     margin: auto;
     display:block;
 }
 .btn-danger {
-    background-color: #d1351b;
-    border-color: #d1351b;
+    background-color: rgba(255, 0, 0, 0.4);
+    border-color: rgba(255, 255, 0, 0.2);
     height: 55px;
     width: 300px;
-    border-radius: 0;
+    border-radius: 0%;
+    border-width: 10px;
     position: relative;
     font-size: 18px;
 }
 .skin-red .main-header .navbar {
-    background-color: rgb(177, 63, 48)5, 123, 0;
+    background-color: rgb(31, 31, 31)5, 123, 0;
 }
 #mapa {
     display: flex;
@@ -24,13 +26,14 @@ body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #333;
+    color: black;
     background-color: #fff;
     padding: 0;
 }
 .main-header {
     position: relative;
     padding: 0;
+    background-color: black;
 }
 .content-wrapper, .main-footer, .right-side {
     position: relative;
@@ -48,6 +51,7 @@ section.content{
 .treeview{
     font-size: 24px;
     min-height: 40  px;
+    background-color: transparent;
 }
 .treeview::marker{
     color: transparent;
