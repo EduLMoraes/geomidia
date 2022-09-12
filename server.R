@@ -71,7 +71,8 @@ mapaAli    <- mapaPaises %>%
         if(grupo_sete$.[i] == "T"){grupo_sete$.[i] = "Pertencente"}else{grupo_sete$.[i] = "Não pertencente"}
         if(grupo_vinte$.[i] == "T"){grupo_vinte$.[i] = "Pertencente"}else{grupo_vinte$.[i] = "Não pertencente"}
         if(guerra_fria$mundo.data.OTAN_195[i] == "T"){guerra_fria$Alianca[i] = "OTAN"} else{guerra_fria$Alianca[i] = "Outras Alianças"}
-          if(guerra_fria$mundo.data.pacto_1955_1991[i] == "T"){guerra_fria$Alianca[i] = "Pacto"}
+          if(guerra_fria$mundo.data.pacto_1955_1991
+             [i] == "T"){guerra_fria$Alianca[i] = "Pacto"}
         if(onu$.[i] == "T"){onu$.[i] = "Pertencente"}else{onu$.[i] = "Não Pertencente"}
         if(primeira_guerra_parti$.[i] == "T"){primeira_guerra_parti$.[i] = "Participante"}else{primeira_guerra_parti$.[i] = "Não Participante"}
         if(segunda_guerra_parti$.[i] == "T"){segunda_guerra_parti$.[i] = "Participante"}else{segunda_guerra_parti$.[i] = "Não Participou"}
@@ -162,6 +163,7 @@ server <- function(input, output,  session){
   observeEvent(input$gm2,{
     output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaGM2)
+    output$texto = renderUI(includeHTML("www/base.html"))
     
     renderPieChart(div_id = "graph_pie", data = segunda_guerra_parti$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
@@ -173,6 +175,7 @@ server <- function(input, output,  session){
   observeEvent(input$lsg,{
     output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaLado)
+    output$texto = renderUI(includeHTML("www/base.html"))
     
     renderPieChart(div_id = "graph_pie", data = mundo@data$LADO, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
@@ -193,6 +196,7 @@ server <- function(input, output,  session){
   observeEvent(input$otan,{
     output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaOtan22)
+    output$texto = renderUI(includeHTML("www/base.html"))
     
     renderPieChart(div_id = "graph_pie", data = guerra_fria$Alianca, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
@@ -204,6 +208,7 @@ server <- function(input, output,  session){
   observeEvent(input$pct,{
     output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaPac)
+    output$texto = renderUI(includeHTML("www/base.html"))
     
     renderPieChart(div_id = "graph_pie", data = guerra_fria$Alianca, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
@@ -215,6 +220,7 @@ server <- function(input, output,  session){
   observeEvent(input$onu,{
     output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaOnu)
+    output$texto = renderUI(includeHTML("www/base.html"))
     
     renderPieChart(div_id = "graph_pie", data = onu$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
@@ -226,6 +232,7 @@ server <- function(input, output,  session){
   observeEvent(input$gst,{
     output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaG7)
+    output$texto = renderUI(includeHTML("www/base.html"))
     
     renderPieChart(div_id = "graph_pie", data = grupo_sete$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
@@ -237,6 +244,7 @@ server <- function(input, output,  session){
   observeEvent(input$gvt,{
     output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaG20)
+    output$texto = renderUI(includeHTML("www/base.html"))
     
     renderPieChart(div_id = "graph_pie", data = grupo_vinte$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
@@ -248,6 +256,7 @@ server <- function(input, output,  session){
   observeEvent(input$sis,{
     output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaSis)
+    output$texto = renderUI(includeHTML("www/base.html"))
     
     renderPieChart(div_id = "graph_pie", data = sistemas_politicos$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)

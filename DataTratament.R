@@ -1,14 +1,3 @@
-#### Bibliotecas                    ####
-library('rgdal')
-library('tidyr')
-library('stringr')
-library('dplyr')
-library('unvotes')
-library('lubridate')
-library('sf')
-
-
-
 #### Dados                          ####
 
 mundo <- readOGR('geodata/mundo/mundo.shp')
