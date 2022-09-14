@@ -5,10 +5,19 @@
 section.sidebar .shiny-bound-input.action-button, section.sidebar .shiny-bound-input.action-link {
     margin: auto;
     display:block;
+    background-color: #444444;
+}
+section.sidebar:hover .shiny-bound-input.action-button:hover, section.sidebar .shiny-bound-input.action-link:hover {
+    margin: auto;
+    display:block;
+    background-color: #205718;
 }
 .btn-danger {
-    background-color: rgb(3, 0, 0);
-    border-color: rgb(255, 255, 255);
+    background-color: #444444;
+    border-top-color: #7a7a7a;
+    border-bottom-color: #7a7a7a;
+    border-left-color: #2b2b2b;
+    border-right-color: #a3a3a3;
     height: 55px;
     width: 300px;
     border-radius: 0%;
@@ -16,12 +25,49 @@ section.sidebar .shiny-bound-input.action-button, section.sidebar .shiny-bound-i
     position: relative;
     font-size: 18px;
 }
+.btn-danger:hover {
+    background-color: #292121;
+    border-top-color: #9b4126;
+    border-bottom-color: #461212;
+    border-left-color: #661717;
+    border-right-color: #9b4126#c75937;
+    height: 55px;
+    width: 300px;
+    border-radius: 0%;
+    border-width: 10px;
+    position: relative;
+    font-size: 18px;
+}
+
+
+.skin-blue .main-sidebar, .skin-blue .wrapper {
+    background-color: #000000;
+}
 .skin-red .main-header .navbar {
-    background-color: rgb(31, 31, 31)5, 123, 0;
+    background-color: rgb(0, 0, 0)5, 123, 0;
 }
 #mapa {
     display: flex;
 }
+.skin-blue .main-header .navbar {
+    background-color: #055e25;
+}
+.skin-blue .main-header .logo {
+    background-color: #055e25;
+    color: #c7c7c7;
+    border-bottom: 0 solid rgba(199, 0, 0, 0);
+}
+
+
+.skin-blue:hover .main-header:hover .logo:hover {
+    background-color: #06742e;
+    color: #c7c7c7;
+    border-bottom: 0 solid rgba(199, 0, 0, 0);
+}
+.skin-blue:hover .main-header:hover .navbar:hover .sidebar-toggle:hover {
+    background-color: #06742e;
+}
+
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
@@ -56,94 +102,3 @@ section.content{
 .treeview::marker{
     color: transparent;
 }
-
-
-
-/* PARTE DO DASHBOARD SHINY *\
-
-/* A replacement for .small-box .icon, where the icon is smaller and doesn't
-   change size when moused over. */
-   .small-box .icon-large {
-    position: absolute;
-    top: auto;
-    bottom: 5px;
-    right: 5px;
-    font-size: 70px;
-    color: rgba(0, 0, 0, 0.15);
-  }
-  
-  /* So that selectize dropdowns are visible if they go off the bottom. */
-  .content {
-    overflow: visible;
-  }
-  
-  .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > .glyphicon,
-  .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > .fa,
-  .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > .fab,
-  .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > .fas,
-  .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > .far,
-  .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > .fal,
-  .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > .ion {
-    float: left;
-    font-size: 30px;
-    width: 50px;
-    text-align: center;
-    margin-right: 5px;
-    color: #000;
-  }
-  
-  /* Sidebar user panel needs a minimum height when there's no image. */
-  section.sidebar .user-panel {
-    min-height: 65px;
-  }
-  
-  /* Inputs in the sidebar */
-  section.sidebar .shiny-input-container {
-    /* Proper spacing around inputs. */
-    padding: 12px 15px 0px 15px;
-    /* Wrap content (important for inline inputs). */
-    white-space: normal;
-  }
-  
-  /* Make action buttons/links look good on the sidebar panel */
-  section.sidebar .shiny-bound-input.action-button,
-  section.sidebar .shiny-bound-input.action-link {
-    margin: 6px 5px 6px 15px;
-    display: block;
-  }
-  
-  /* Shiny inputs in boxes should span full width. */
-  div.box-body .shiny-input-container {
-    width: auto;
-  }
-  
-  /* Sidebar is dark, so make text light by default. */
-  .sidebar {
-    color: #fff;
-  }
-  /* Slider min and max in sidebar. */
-  .sidebar .irs-min, .sidebar .irs-max {
-    color: #aaa;
-  }
-  
-  /* Don't highlight text when info box is in <a> tag */
-  a > .info-box {
-    color: #333;
-  }
-  
-  /*  Shiny Server Pro logout panel needs to be raised above menu bar */
-  .shiny-server-account {
-    z-index: 2000;
-  }
-  
-  /* fontAwesome is the FA4 family name; 'Font Awesome 5 Free' is the FA 5 name.
-   * This rule makes the sidebar-toggle 'bars' icon appear properly both in
-   * Shiny <= 1.1 (FA4) and Shiny 1.2+ (FA5).
-   * The font-weight value is for FA5, as multiple styles are mapped
-   * to different weights.
-   */
-  .main-header .sidebar-toggle {
-    font-family: fontAwesome, 'Font Awesome 5 Free';
-    font-weight: 900;
-  }
-  

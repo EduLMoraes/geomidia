@@ -1,10 +1,9 @@
 ####    Dashboard ####
 temas <- c('tema1', 'tema2', 'tema3', 'tema4')
-skin <- 'red'
 gm <- c("Guerras & Conflitos", "1ª Guerra Mundial" = 1, "2ª Guerra Mundial" = 2, "Guerra Fria" = 3)
 
-ui <- dashboardPage(skin = skin,
-                    title = "GEOPMÍDIA",
+ui <- dashboardPage(
+                    title = "GEOMÍDIA",
                     
      # HEADER     -------------------------------------------------------
                     dashboardHeader(
