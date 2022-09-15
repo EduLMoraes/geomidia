@@ -163,7 +163,7 @@ server <- function(input, output,  session){
   observeEvent(input$gm2,{
     output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaGM2)
-    output$texto = renderUI(includeHTML("www/base.html"))
+    output$texto = renderUI(includeHTML("www/seggue.html"))
     
     renderPieChart(div_id = "graph_pie", data = segunda_guerra_parti$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
@@ -175,7 +175,7 @@ server <- function(input, output,  session){
   observeEvent(input$lsg,{
     output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaLado)
-    output$texto = renderUI(includeHTML("www/base.html"))
+    output$texto = renderUI(includeHTML("www/seggue.html"))
     
     renderPieChart(div_id = "graph_pie", data = mundo@data$LADO, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)

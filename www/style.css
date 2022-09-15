@@ -1,6 +1,6 @@
 #sidebar_button {
     height: 55px;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 }
 section.sidebar .shiny-bound-input.action-button, section.sidebar .shiny-bound-input.action-link {
     margin: auto;
@@ -11,6 +11,9 @@ section.sidebar:hover .shiny-bound-input.action-button:hover, section.sidebar .s
     margin: auto;
     display:block;
     background-color: #205718;
+}
+.btn .btn-default .action-button .shiny-bound-input{
+    background-color: white;
 }
 .btn-danger {
     background-color: #444444;
@@ -45,6 +48,7 @@ section.sidebar:hover .shiny-bound-input.action-button:hover, section.sidebar .s
 }
 .skin-red .main-header .navbar {
     background-color: rgb(0, 0, 0)5, 123, 0;
+    height: auto;
 }
 #mapa {
     display: flex;
@@ -84,6 +88,7 @@ body {
 .content-wrapper, .main-footer, .right-side {
     position: relative;
 }
+
 section.content{
     padding: 0;
     border: 0;

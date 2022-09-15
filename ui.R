@@ -75,25 +75,28 @@ ui <- dashboardPage(
                       
                       
                       fluidRow(
-                        column(4,
+                        column(6,
                                textOutput(outputId = "GraficoPie"),
-                               tags$div(id="graph_pie", style="width:100%;height:200px;"),  # Specify the div for the chart.
+                               tags$div(id="graph_pie", style="width:100%;height:300px;"),  # Specify the div for the chart.
                                deliverChart(div_id = "graph_pie"),
                         ),
-                        column(4,
+                        column(6,
                                # Deliver the plotting
                                
                                textOutput(outputId = "GraficoBar"),
-                               tags$div(id="graph_bar", style="width:100%;height:200px;"),
+                               tags$div(id="graph_bar", style="width:100%;height:300px;"),
                                deliverChart(div_id = "graph_bar")
-                        ),
-                        column(4,
-                               textOutput(outputId = "GraficoLin"),
-                               tags$div(id="graph_line", style="width:100%;height:200px;"),
-                               deliverChart(div_id = "graph_line")
                         )
                       ),
                       
+                      fluidRow(
+                        column(1),
+                        column(10,
+                              textOutput(outputId = "GraficoLin"),
+                              tags$div(id="graph_line", style="width:100%;height:300px;"),
+                              deliverChart(div_id = "graph_line")
+                        )
+                      ),
                       
                       fluidRow(
                         htmlOutput(outputId = "texto")
