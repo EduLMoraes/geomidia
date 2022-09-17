@@ -33,7 +33,7 @@ ui <- dashboardPage(
                                 actionButton(inputId = "lsg", label = "Lados da Segunda Guerra", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;")
                         ),
                         menuItem("GUERRA FRIA (1945-1991)",
-                                actionButton(inputId = "GF", label = "O que foi", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
+                                actionButton(inputId = "gf", label = "O que foi", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
                                 actionButton(inputId = "otan", label = "OTAN", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
                                 actionButton(inputId = "pct", label = "Pacto de Varsóvia", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;")
                         )

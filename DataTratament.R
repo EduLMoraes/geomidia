@@ -1,10 +1,9 @@
 #### Dados                          ####
 
-mundo <- readOGR('geodata/mundo/mundo.shp')
-certiMundo <- readOGR('geodata/mundo/mundo.shp')
-continente <- readOGR('geodata/continentes/Continents.shp')
+mundo <-      geojsonio::geojson_read('https://raw.githubusercontent.com/EduardoMoreaes/Geojson/master/mundo.geojson', what = "sp")
+certiMundo <- geojsonio::geojson_read('https://raw.githubusercontent.com/EduardoMoreaes/Geojson/master/mundo.geojson', what = "sp")
+continente <- geojsonio::geojson_read("https://raw.githubusercontent.com/EduardoMoreaes/Geojson/master/continentes.geojson", what = "sp")
 mundo@data <- mundo@data %>% arrange(CNTRY_NAME)
-
 cont = data.frame(v1 = c(19),
                   v2 = c(17),
                   v3 = c(18),

@@ -1,59 +1,60 @@
 ####    Mapas     ####
-
+{
 source("DataTratament.R")
 
-## MAPAS GENÉRICOS ##
+##      MAPAS GENÉRICOS ----
 mapaPaises <- leaflet(mundo) %>% setView(lat=0, lng=0, zoom = 2) %>% addTiles(options = tileOptions(minZoom = 2, maxZoom = 10, maxNativeZoom = 5), urlTemplate = "http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}&s=Ga")
 mapaContin <- leaflet(continente) %>% setView(lat=0, lng=0, zoom = 2) %>% addTiles(options = tileOptions(minZoom = 2, maxZoom = 10, maxNativeZoom = 5), urlTemplate = "http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}&s=Ga") %>% addPolygons(color = "black", label = continente@data$PLACENAME, weight = 1, opacity = 0.5)
 
 
-#       MAPA GM1    #
+#       MAPA GM1        ----
 mapaGM1    <- mapaPaises %>%
   addPolygons(color = mundo@data$corGM1, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
 
-#       MAPA GM2    #
+#       MAPA GM2        ----
 mapaGM2    <- mapaPaises %>%
   addPolygons(color = mundo@data$corGM2, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
 
-#       MAPA G7     #
+#       MAPA G7         ----
 mapaG7    <- mapaPaises %>%
   addPolygons(color = mundo@data$corG7, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
 
-#       MAPA G20
+#       MAPA G20        ----
 mapaG20    <- mapaPaises %>%
   addPolygons(color = mundo@data$corG20, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
 
-#       MAPA ONU    #
+#       MAPA ONU        ----
 mapaOnu    <- mapaPaises %>%
   addPolygons(color = mundo@data$corOnu, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
 
-#       MAPA OTAN   #
+#       MAPA OTAN       ----
 mapaOtan49    <- mapaPaises %>%
   addPolygons(color = mundo@data$cOTAN_4, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
 mapaOtan22    <- mapaPaises %>%
   addPolygons(color = mundo@data$cOTAN_2, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
 
-#       MAPA PACTO  #
+#       MAPA PACTO      ----
 mapaPac    <- mapaPaises %>%
   addPolygons(color = mundo@data$corPact, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
 
-#       MAPA IMPERIO#
+#       MAPA IMPERIO    ----
 mapaImp    <- mapaPaises %>%
   addPolygons(color = mundo@data$corIMP, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
 
-#       MAPA SISTEMA#
+#       MAPA SISTEMA    ----
 mapaSis   <- mapaPaises %>%
   addPolygons(color = mundo@data$corSis, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
 
-#       MAPA LADO   #
+#       MAPA LADO       ----
 mapaLado    <- mapaPaises %>%
   addPolygons(color = mundo@data$corLado, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
 
-#       MAPA ALIANÇA#
+#       MAPA ALIANÇA    ----
 mapaAli    <- mapaPaises %>%
   addPolygons(color = mundo@data$corTRI, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
 
 
+}
 ####    Graficos  ####
 {
   #     GRAFICO PIZZA     ----
@@ -188,6 +189,16 @@ server <- function(input, output,  session){
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaAli)
     
     renderPieChart(div_id = "graph_pie", data = mundo@data$LADO, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
+    renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
+    renderBarChart(div_id = "graph_bar", data = ranking, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
+  })
+  #     TELA GUERRA FRIA          ####
+  observeEvent(input$gf,{
+    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
+    output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaPaises)
+    output$texto = renderUI(includeHTML("www/guefri.html"))
+    
+    renderPieChart(div_id = "graph_pie", data = guerra_fria$Alianca, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
     renderBarChart(div_id = "graph_bar", data = ranking, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
