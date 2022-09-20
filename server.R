@@ -29,9 +29,9 @@ mapaOnu    <- mapaPaises %>%
 
 #       MAPA OTAN       ----
 mapaOtan49    <- mapaPaises %>%
-  addPolygons(color = mundo@data$cOTAN_4, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
+  addPolygons(color = mundo@data$corOTAN_49, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
 mapaOtan22    <- mapaPaises %>%
-  addPolygons(color = mundo@data$cOTAN_2, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
+  addPolygons(color = mundo@data$corOTAN_22, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
 
 #       MAPA PACTO      ----
 mapaPac    <- mapaPaises %>%
@@ -207,7 +207,7 @@ server <- function(input, output,  session){
   observeEvent(input$otan,{
     output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaOtan22)
-    output$texto = renderUI(includeHTML("www/base.html"))
+    output$texto = renderUI(includeHTML("www/otanre.html"))
     
     renderPieChart(div_id = "graph_pie", data = guerra_fria$Alianca, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
@@ -219,7 +219,7 @@ server <- function(input, output,  session){
   observeEvent(input$pct,{
     output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaPac)
-    output$texto = renderUI(includeHTML("www/base.html"))
+    output$texto = renderUI(includeHTML("www/pactov.html"))
     
     renderPieChart(div_id = "graph_pie", data = guerra_fria$Alianca, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
