@@ -1,0 +1,13 @@
+name: geomidia
+title: geomidia
+username:
+account: geomidia
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7069487
+bundleId: 6321698
+url: https://geomidia.shinyapps.io/geomidia/
+when: 1663712885.48872
+lastSyncTime: 1663712885.48873
+asMultiple: FALSE
+asStatic: FALSE

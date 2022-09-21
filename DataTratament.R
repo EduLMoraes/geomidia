@@ -1,4 +1,16 @@
 #### Dados                          ####
+library("leaflet")
+library("rgdal")
+library("tidyverse")
+library("rsconnect")
+library("geojson")
+library("tidyr")
+library("stringr")
+library("dplyr")
+library("unvotes")
+library("lubridate")
+library("sf")
+
 
 mundo <-      geojsonio::geojson_read('https://raw.githubusercontent.com/EduardoMoreaes/Geojson/master/mundo.geojson', what = "sp")
 certiMundo <- geojsonio::geojson_read('https://raw.githubusercontent.com/EduardoMoreaes/Geojson/master/mundo.geojson', what = "sp")
@@ -154,7 +166,7 @@ rm(paises, abrev_pais, onuData, i, onuPaises)
 #http://data.un.org/UpdateCalendar.aspx
 
 #### Grupos mundiais                ####
-g7 <- c("United Kingdom", "France", "Russia", "Canada", "Italy", "Germany", "Japan")
+g7 <- c("United Kingdom", "France", "United States", "Canada", "Italy", "Germany", "Japan")
 g7 <- sort(g7)
 g20 <- c("South Africa", "Germany", "Saudi Arabia", "Argentina", "Australia",
          "Brazil", "Canada", "China", "South Korea", "United States", "France", "India",
@@ -371,8 +383,8 @@ mundo@data <- certiMundo@data %>%
   inner_join(mundo@data, by = c('CNTRY_NAME'='CNTRY_NAME'))
 mundo@data <- mundo@data[, -c(14:27)]
 return(mundo@data)
-writeOGR(mundo, dsn = "./geodata/mundo", layer = "mundoGeopolitico", driver = 'ESRI Shapefile', overwrite_layer = TRUE)
-write.csv2(cidadesG, file = "./geodata/mundo/cidadesGlobalizadas.csv")
-write.csv2(onuFundos, file = "./geodata/mundo/onuFundos.csv")
+#writeOGR(mundo, dsn = "./geodata/mundo", layer = "mundoGeopolitico", driver = 'ESRI Shapefile', overwrite_layer = TRUE)
+#write.csv2(cidadesG, file = "./geodata/mundo/cidadesGlobalizadas.csv")
+#write.csv2(onuFundos, file = "./geodata/mundo/onuFundos.csv")
 
 rm(i, cont, cidadesG, onuFundos, expec, guerraFria, produ, certiMundo)

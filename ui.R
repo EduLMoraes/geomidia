@@ -1,4 +1,14 @@
 ####    Dashboard ####
+library("shiny")
+library("shinyjs")
+library("shinyBS")
+library("shinythemes")
+library("shinyWidgets")
+library("ECharts2Shiny")
+library("shinydashboard")
+library("shinycssloaders")
+library("leaflet")
+
 temas <- c('tema1', 'tema2', 'tema3', 'tema4')
 gm <- c("Guerras & Conflitos", "1ª Guerra Mundial" = 1, "2ª Guerra Mundial" = 2, "Guerra Fria" = 3)
 
