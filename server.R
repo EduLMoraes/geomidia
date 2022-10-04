@@ -29,7 +29,7 @@ mapaGM2    <- mapaPaises %>%
 #       MAPA G7         ----
 mapaG7    <- mapaPaises %>%
   addPolygons(color = mundo@data$corG7, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
-mapaG7
+
 #       MAPA G20        ----
 mapaG20    <- mapaPaises %>%
   addPolygons(color = mundo@data$corG20, label = mundo@data$CNTRY_N, weight = 1, opacity = 1)
