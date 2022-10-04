@@ -364,18 +364,18 @@ produ <- c("conteudo")
 #### Cores                          ####
 
 for(i in 1 : nrow(mundo@data)){
-  if(mundo@data$GM1[i] == "T"){ mundo@data$corGM1[i] = "red" }else{mundo@data$corGM1[i] = ""}
-  if(mundo@data$GM2[i] == "T"){ mundo@data$corGM2[i] = "red" }else{mundo@data$corGM2[i] = ""}
+  if(mundo@data$GM1[i] == "T"){ mundo@data$corGM1[i] = "red" }else{mundo@data$corGM1[i] = "black"}
+  if(mundo@data$GM2[i] == "T"){ mundo@data$corGM2[i] = "red" }else{mundo@data$corGM2[i] = "black"}
   if(mundo@data$G7[i] == "T"){ mundo@data$corG7[i] = "yellow" }else{mundo@data$corG7[i] = "black"}
-  if(mundo@data$ONU[i] == "T"){ mundo@data$corOnu[i] = "blue" }else{mundo@data$corOnu[i] = "grey"}
+  if(mundo@data$ONU[i] == "T"){ mundo@data$corOnu[i] = "white" }else{mundo@data$corOnu[i] = "black"}
   if(mundo@data$G20[i] == "T"){ mundo@data$corG20[i] = "yellow" }else{ mundo@data$corG20[i] = "black"}
-  if(mundo@data$IMP_CENTRAIS[i] == "T"){ mundo@data$corIMP[i] = "red" }else{mundo@data$corIMP[i] = ""}
+  if(mundo@data$IMP_CENTRAIS[i] == "T"){ mundo@data$corIMP[i] = "red" }else{mundo@data$corIMP[i] = "black"}
   if(mundo@data$SIS_POL[i] == "capital"){ mundo@data$corSis[i] = "blue" }else{mundo@data$corSis[i] = "red"}
-  if(mundo@data$OTAN_1949[i] == "T"){ mundo@data$corOTAN_49[i] = "white" }else{mundo@data$corOTAN_49[i] = ""}
-  if(mundo@data$OTAN_2022[i] == "T"){ mundo@data$corOTAN_22[i] = "white" }else{mundo@data$corOTAN_22[i] = ""}
-  if(mundo@data$pacto_1955_1991[i] == "T"){ mundo@data$corPacto[i] = "red" }else{mundo@data$corPacto[i] = ""}
-  if(mundo@data$LADO[i] == "Aliados"){ mundo@data$corLado[i] = "blue" }else if(mundo@data$LADO[i] == "Eixo"){ mundo@data$corLado[i] = "red" }else{mundo@data$corLado[i] = ""}
-  if(mundo@data$TRIPLICE[i] == "Aliança"){ mundo@data$corTRI[i] = "blue" }else if(mundo@data$TRIPLICE[i] == "Entente"){mundo@data$corTRI[i] = "red"}else{mundo@data$corTRI[i] = ""}
+  if(mundo@data$OTAN_1949[i] == "T"){ mundo@data$corOTAN_49[i] = "white" }else{mundo@data$corOTAN_49[i] = "black"}
+  if(mundo@data$OTAN_2022[i] == "T"){ mundo@data$corOTAN_22[i] = "white" }else{mundo@data$corOTAN_22[i] = "black"}
+  if(mundo@data$pacto_1955_1991[i] == "T"){ mundo@data$corPacto[i] = "red" }else{mundo@data$corPacto[i] = "black"}
+  if(mundo@data$LADO[i] == "Aliados"){ mundo@data$corLado[i] = "blue" }else if(mundo@data$LADO[i] == "Eixo"){ mundo@data$corLado[i] = "red" }else{mundo@data$corLado[i] = "black"}
+  if(mundo@data$TRIPLICE[i] == "Aliança"){ mundo@data$corTRI[i] = "blue" }else if(mundo@data$TRIPLICE[i] == "Entente"){mundo@data$corTRI[i] = "red"}else{mundo@data$corTRI[i] = "black"}
 }
 
 #### Final                          ####

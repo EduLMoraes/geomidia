@@ -254,7 +254,7 @@ server <- function(input, output,  session){
   observeEvent(input$gst,{
     output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaG7)
-    output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/base.html"))
+    output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/g07res.html"))
     
     renderPieChart(div_id = "graph_pie", data = grupo_sete$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
