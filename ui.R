@@ -27,38 +27,39 @@ ui <- dashboardPage(
                       
                       sidebarMenu(
                         div(id = "sidebar_button",
-                            bsButton(inputId = "inicio", label = "INICIO", icon = icon("play-circle"), style = "danger")
+                            div(id= 'star'),
+                            bsButton(inputId = "inicio", label = "", icon = icon("play-circle"), style = "danger")
                         )
                       ),
                       br(),
                       # Guerra             -----
-                      menuItem("GUERRA", tabName = "antimicrobials", icon = icon("fire"),
+                      menuItem("GUERRAS", tabName = "antimicrobials", icon = icon("fire"),
                         menuItem("1ª GUERRA MUNDIAL \n (1914-1918)",
-                                actionButton(inputId = "gm1", label = "A Grande Guerra", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
-                                actionButton(inputId = "imp", label = "Impérios Centrais", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
-                                actionButton(inputId = "ali", label = "Aliados", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;")
+                                actionButton(inputId = "gm1", label = "A Grande Guerra", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;"),
+                                actionButton(inputId = "imp", label = "Impérios Centrais", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;"),
+                                actionButton(inputId = "ali", label = "Aliados", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;")
                         ),
-                        menuItem("2ª GUERRA MUNDIAL (1939-1945)",
-                                actionButton(inputId = "gm2", label = "A Segunda Guerra Mundial", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
-                                actionButton(inputId = "lsg", label = "Lados da Segunda Guerra", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;")
+                         menuItem("2ª GUERRA MUNDIAL (1939-1945)",
+                                actionButton(inputId = "gm2", label = "2ª Guerra Mundial", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;"),
+                                actionButton(inputId = "lsg", label = "Lados da 2ª Guerra", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;")
                         ),
                         menuItem("GUERRA FRIA (1945-1991)",
-                                actionButton(inputId = "gf", label = "O que foi", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
-                                actionButton(inputId = "otan", label = "OTAN", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
-                                actionButton(inputId = "pct", label = "Pacto de Varsóvia", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;")
+                                actionButton(inputId = "gf", label = "O que foi", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;"),
+                                actionButton(inputId = "otan", label = "OTAN", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;"),
+                                actionButton(inputId = "pct", label = "Pacto de Varsóvia", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;")
                         )
                       ),
                       br(),
                       # Organização        -----
                       menuItem("ORGANIZÇÕES", tabName = "organizacoes", icon = icon("cog", lib = "glyphicon"),
-                               actionButton(inputId = "onu", label = "ONU", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
-                               actionButton(inputId = "gst", label = "G7", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;"),
-                               actionButton(inputId = "gvt", label = "G20", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;")
+                               actionButton(inputId = "onu", label = "ONU", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;"),
+                               actionButton(inputId = "gst", label = "G7", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;"),
+                               actionButton(inputId = "gvt", label = "G20", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;")
                       ),
                       br(),
                       # Sistemas Políticos ----
                       menuItem("SISTEMAS POLÍTICOS", tabName = "aliancas", icon = icon("money"),
-                               actionButton(inputId = "sis", label = "Sistemas Políticos", style="width:88%; background-color:black; color:white; margin-left:15px; margin-top:5px;")
+                               actionButton(inputId = "sis", label = "Sistemas Políticos", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;")
                       ),
                       br()
                     ),

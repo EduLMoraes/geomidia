@@ -83,15 +83,16 @@ mapaAli    <- mapaPaises %>%
         if(grupo_sete$.[i] == "T"){grupo_sete$.[i] = "Pertencente"}else{grupo_sete$.[i] = "Não pertencente"}
         if(grupo_vinte$.[i] == "T"){grupo_vinte$.[i] = "Pertencente"}else{grupo_vinte$.[i] = "Não pertencente"}
         if(guerra_fria$mundo.data.OTAN_195[i] == "T"){guerra_fria$Alianca[i] = "OTAN"} else{guerra_fria$Alianca[i] = "Outras Alianças"}
-          if(guerra_fria$mundo.data.pacto_1955_1991
-             [i] == "T"){guerra_fria$Alianca[i] = "Pacto"}
+          if(guerra_fria$mundo.data.pacto_1955_1991[i] == "T"){guerra_fria$Alianca[i] = "Pacto"}
         if(onu$.[i] == "T"){onu$.[i] = "Pertencente"}else{onu$.[i] = "Não Pertencente"}
         if(primeira_guerra_parti$.[i] == "T"){primeira_guerra_parti$.[i] = "Participante"}else{primeira_guerra_parti$.[i] = "Não Participante"}
         if(segunda_guerra_parti$.[i] == "T"){segunda_guerra_parti$.[i] = "Participante"}else{segunda_guerra_parti$.[i] = "Não Participou"}
         if(sistemas_politicos$.[i] == "sociali"){sistemas_politicos$.[i] = "Socialismo"}else{sistemas_politicos$.[i] = "Capitalismo"}
-        if(imperios_centrais$.[i] == "T"){imperios_centrais$.[i] = "Imperios Centrais"}else{imperios_centrais$.[i] = "Outras Alianças"}
-        if(aliados_primeira$.[i] == "Aliados"){aliados_primeira$.[i] = "Aliados"}else{aliados_primeira$.[i] = "Outras Alianças"}
+        if(imperios_centrais$.[i] == "T"){imperios_centrais$.[i] = "Imperios Centrais"}else{imperios_centrais$.[i] = "Não participante"}
+        if(aliados_primeira$.[i] == "Aliados"){aliados_primeira$.[i] = "Aliados"}else if(aliados_primeira$.[i]=="Eixo"){aliados_primeira$.[i] = "Eixo"}else{aliados_primeira$.[i] = ""}
       }
+      aliados_primeira$. = sort(aliados_primeira$.)
+      ali = aliados_primeira[-c(1:244),] %>% as.data.frame()
       
   #     GRAFICO BARRA     ----
       tamanho               <- read.csv2("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/geodata/mundo/rankingArea.csv")
@@ -165,7 +166,7 @@ server <- function(input, output,  session){
     output$GraficoLin = renderText("Paises Atuantes Na Primeira Guerra Mundial"); output$mapa = renderLeaflet(mapaAli)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/prigue.html"))
     
-    renderPieChart(div_id = "graph_pie", data = aliados_primeira$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
+    renderPieChart(div_id = "graph_pie", data = ali$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = entrada_primeira_guerra, theme = 'roma', show.tools=F, show.legend = F)
     renderBarChart(div_id = "graph_bar", data = primeira_guerra_barra, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
   })

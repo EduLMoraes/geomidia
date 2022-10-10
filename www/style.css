@@ -1,54 +1,67 @@
 #sidebar_button {
-    height: 55px;
-    background-color: rgb(0, 0, 0);
+    height: 200px;
+    background-image: url('./estrelas.jpeg');
+    background-repeat: repeat-x;
+    animation: anim-stars 60s infinite;
+    padding: 20px;
 }
+
+@keyframes anim-stars {
+    from {
+        background-position: 0px;
+    }
+    to {
+        background-position: -319px;
+    }
+}
+
+
 section.sidebar .shiny-bound-input.action-button, section.sidebar .shiny-bound-input.action-link {
     margin: auto;
     display:block;
-    background-color: #444444;
+    background-image: url('./terra.jpeg');
 }
-section.sidebar:hover .shiny-bound-input.action-button:hover, section.sidebar .shiny-bound-input.action-link:hover {
+@keyframes anim-earth {
+    from {
+        background-position: 0px;
+    }
+    to {
+        background-position: -319px;
+    }
+}
+
+.btn-danger {
     margin: auto;
     display:block;
-    background-color: #205718;
+    background-image: url('./terra.jpeg');
+    background-position-y: -15px;
+    border-color: cadetblue;
+    transition: 5s;
+    transform: rotate(23deg);
+    border-radius: 100%;
+    font-size: 40px;
+    height: 150px;
+    width: 190px;
+    background-repeat: repeat-x;
+    animation: anim-earth 25s linear infinite;
+    transition: 0s;
 }
-.btn .btn-default .action-button .shiny-bound-input{
-    background-color: white;
-}
-.btn-danger {
-    background-color: #444444;
-    border-top-color: #7a7a7a;
-    border-bottom-color: #7a7a7a;
-    border-left-color: #2b2b2b;
-    border-right-color: #a3a3a3;
-    height: 55px;
-    width: 300px;
-    border-radius: 0%;
-    border-width: 10px;
-    position: relative;
-    font-size: 18px;
-}
-.btn-danger:hover {
-    background-color: #292121;
-    border-top-color: #9b4126;
-    border-bottom-color: #461212;
-    border-left-color: #661717;
-    border-right-color: #9b4126#c75937;
-    height: 55px;
-    width: 300px;
-    border-radius: 0%;
-    border-width: 10px;
-    position: relative;
-    font-size: 18px;
+.btn-danger:hover{
+    color: black;
+    border-color: black;
 }
 
 
 .skin-blue .main-sidebar, .skin-blue .wrapper {
-    background-color: #000000;
+   background-color: black;
+   height: 400px;
 }
 .skin-red .main-header .navbar {
-    background-color: rgb(0, 0, 0)5, 123, 0;
+    background-image: url('./estrelas.jpeg');
+    background-repeat: repeat-x;
+    animation: anim-stars 60s infinite;
     height: auto;
+    width: 200px;
 }
 #mapa {
     display: flex;
@@ -56,20 +69,58 @@ section.sidebar:hover .shiny-bound-input.action-button:hover, section.sidebar .s
 .skin-blue .main-header .navbar {
     background-color: #055e25;
 }
+.main-sidebar, .left-side {
+    height: auto;
+}
 .skin-blue .main-header .logo {
     background-color: #055e25;
-    color: #c7c7c7;
-    border-bottom: 0 solid rgba(199, 0, 0, 0);
+    color: white;
+    height: auto;
 }
 
 
 .skin-blue:hover .main-header:hover .logo:hover {
-    background-color: #06742e;
-    color: #c7c7c7;
-    border-bottom: 0 solid rgba(199, 0, 0, 0);
+    color: white;
+    background-color: #055e25;
+    animation: title 1s normal forwards;
 }
 .skin-blue:hover .main-header:hover .navbar:hover .sidebar-toggle:hover {
     background-color: #06742e;
+}
+@keyframes title {
+    0%{
+        border-bottom-left-radius: 0px;
+        border-width: 2px;
+        text-align: center;
+        background-color: #055e25;
+    }
+    25%{
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        text-align: center;
+        border-width: 2px;
+    }
+    50%{
+        border-bottom-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-width: 2px;
+        text-align: center;
+        border-bottom-color: grey;
+    }
+    75%{
+        border-bottom-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-width: 3px;
+        text-align: center;
+        border-bottom-color: pink;
+    }
+    100%{
+        border-bottom-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-width: 3px;
+        border-bottom-color: purple;
+        background-color: #009e3a;
+    }
 }
 
 body {
@@ -83,7 +134,9 @@ body {
 .main-header {
     position: relative;
     padding: 0;
-    background-color: black;
+    background-image: url('./estrelas.jpeg');
+    background-repeat: repeat-x;
+    animation: anim-stars 60s infinite;
 }
 .content-wrapper, .main-footer, .right-side {
     position: relative;
@@ -97,12 +150,14 @@ section.content{
 }
 .treeview:hover{
     background-color: #070707;
-    font-size: 25px
+    font-size: 28px;
+    
 }
 .treeview{
     font-size: 24px;
     min-height: 40  px;
     background-color: transparent;
+    color: wheat;
 }
 .treeview::marker{
     color: transparent;
