@@ -246,7 +246,7 @@ for(i in 1 : nrow(mundo@data)){
     mundo@data$LADO[i] = "Aliados"
     cont$v9 = cont$v9+1
     if(cont$v9 > 4){cont$v9 = 1}
-  } else{mundo@data$LADO[i] = NULL}
+  } else{mundo@data$LADO[i] = "Outros países"}
 }
 for(i in 1 : nrow(mundo@data)){
   if(mundo@data$CNTRY_NAME[i] == eixo[cont$v9]){
@@ -387,4 +387,4 @@ return(mundo@data)
 #write.csv2(cidadesG, file = "./geodata/mundo/cidadesGlobalizadas.csv")
 #write.csv2(onuFundos, file = "./geodata/mundo/onuFundos.csv")
 
-rm(i, cont, cidadesG, onuFundos, expec, guerraFria, produ, certiMundo)
+rm(cont, cidadesG, onuFundos, expec, guerraFria, produ, certiMundo)
