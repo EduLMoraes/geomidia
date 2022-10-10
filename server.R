@@ -66,51 +66,6 @@ mapaAli    <- mapaPaises %>%
 
 
 }
-####    Graficos  ####
-{
-  #     GRAFICO PIZZA     ----
-      primeira_guerra_parti <- mundo@data$GM1 %>% as.data.frame()
-      segunda_guerra_parti  <- mundo@data$GM2 %>% as.data.frame()
-      guerra_fria           <- data.frame(mundo@data$OTAN_195, mundo@data$pacto_1955_1991)
-      grupo_sete            <- mundo@data$G7 %>% as.data.frame()
-      grupo_vinte           <- mundo@data$G20 %>% as.data.frame()
-      sistemas_politicos    <- mundo@data$SIS_POL %>% as.data.frame()
-      onu                   <- mundo@data$ONU %>% as.data.frame()
-      imperios_centrais     <- mundo@data$IMP_CEN %>% as.data.frame()
-      aliados_primeira      <- mundo@data$LADO %>% as.data.frame()
-      
-      for(i in 1 : nrow(grupo_sete)){
-        if(grupo_sete$.[i] == "T"){grupo_sete$.[i] = "Pertencente"}else{grupo_sete$.[i] = "Não pertencente"}
-        if(grupo_vinte$.[i] == "T"){grupo_vinte$.[i] = "Pertencente"}else{grupo_vinte$.[i] = "Não pertencente"}
-        if(guerra_fria$mundo.data.OTAN_195[i] == "T"){guerra_fria$Alianca[i] = "OTAN"} else{guerra_fria$Alianca[i] = "Outros países"}
-          if(guerra_fria$mundo.data.pacto_1955_1991[i] == "T"){guerra_fria$Alianca[i] = "Pacto"}
-        if(onu$.[i] == "T"){onu$.[i] = "Pertencente"}else{onu$.[i] = "Não Pertencente"}
-        if(primeira_guerra_parti$.[i] == "T"){primeira_guerra_parti$.[i] = "Participante"}else{primeira_guerra_parti$.[i] = "Não Participante"}
-        if(segunda_guerra_parti$.[i] == "T"){segunda_guerra_parti$.[i] = "Participante"}else{segunda_guerra_parti$.[i] = "Não Participante"}
-        if(sistemas_politicos$.[i] == "sociali"){sistemas_politicos$.[i] = "Socialismo"}else{sistemas_politicos$.[i] = "Capitalismo"}
-        if(imperios_centrais$.[i] == "T"){imperios_centrais$.[i] = "Imperios Centrais"}else{imperios_centrais$.[i] = "Não participante"}
-        if(aliados_primeira$.[i] == "Aliados"){aliados_primeira$.[i] = "Aliados"}else if(aliados_primeira$.[i]=="Eixo"){aliados_primeira$.[i] = "Eixo"}else{aliados_primeira$.[i] = ""}
-      }
-      aliados_primeira$. = sort(aliados_primeira$.)
-      ali = aliados_primeira[-c(1:244),] %>% as.data.frame()
-      
-  #     GRAFICO BARRA     ----
-      tamanho               <- read.csv2("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/geodata/mundo/rankingArea.csv")
-      ranking               <- tamanho[,-c(1:2)] %>% as.data.frame()
-      row.names(ranking)    <- tamanho$Paises
-      
-      Paises                <- c("França", "Alemanha", "Áustria-Hungria", "Grã-Bretanha", "Rússia", "Itália", "EUA", "Colônias Inglesas")
-      primeira_guerra_barra <- data.frame("Tropas" = c(8, 13, 9, 9, 18, 6, 4, 2))
-      row.names(primeira_guerra_barra) <- Paises
-      
-      
-  #     GRAFICO LINHA     ----  
-      ano_primeira_guerra     <- c(1914, 1915, 1916, 1917, 1918)
-      entrada_primeira_guerra <- data.frame("Paises" = c(11, 12, 13, 14, 0))
-      row.names(entrada_primeira_guerra) <- ano_primeira_guerra
-      
-      
-}
 ####    Server    ####
 server <- function(input, output,  session){
   #     TELA INICIAL              ----
@@ -142,8 +97,8 @@ server <- function(input, output,  session){
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/prigue.html"))
     
     renderPieChart(div_id = "graph_pie", data = primeira_guerra_parti$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
-    renderLineChart(div_id = "graph_line", data = entrada_primeira_guerra, theme = 'roma', show.tools=F, show.legend = F)
-    renderBarChart(div_id = "graph_bar", data = primeira_guerra_barra, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
+    renderLineChart(div_id = "graph_line", data = gl1, theme = 'roma', show.tools=F, show.legend = F)
+    renderBarChart(div_id = "graph_bar", data = gb1, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
   
   
@@ -166,7 +121,7 @@ server <- function(input, output,  session){
     output$GraficoLin = renderText("Paises Atuantes Na Primeira Guerra Mundial"); output$mapa = renderLeaflet(mapaAli)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/prigue.html"))
     
-    renderPieChart(div_id = "graph_pie", data = ali$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
+    renderPieChart(div_id = "graph_pie", data = aliados_primeira$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = entrada_primeira_guerra, theme = 'roma', show.tools=F, show.legend = F)
     renderBarChart(div_id = "graph_bar", data = primeira_guerra_barra, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
@@ -190,7 +145,7 @@ server <- function(input, output,  session){
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaLado)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/seggue.html"))
     
-    renderPieChart(div_id = "graph_pie", data = mundo@data$LADO, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
+    renderPieChart(div_id = "graph_pie", data = ali$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
     renderBarChart(div_id = "graph_bar", data = ranking, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
