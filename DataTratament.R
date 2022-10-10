@@ -246,7 +246,7 @@ for(i in 1 : nrow(mundo@data)){
     mundo@data$LADO[i] = "Aliados"
     cont$v9 = cont$v9+1
     if(cont$v9 > 4){cont$v9 = 1}
-  } else{mundo@data$LADO[i] = "F"}
+  } else{mundo@data$LADO[i] = NULL}
 }
 for(i in 1 : nrow(mundo@data)){
   if(mundo@data$CNTRY_NAME[i] == eixo[cont$v9]){
