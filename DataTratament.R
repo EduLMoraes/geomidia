@@ -408,7 +408,7 @@ row.names(pib_tot)    <- pib_lad
 #======== primeira guerra ==========#
 ano_primeira_guerra     <- c(1914, 1915, 1916, 1917, 1918)
 p_p_g                   <- data.frame("Paises" = c(11, 12, 13, 14, 0))
-row.names(gl1)          <- ano_primeira_guerra
+row.names(p_p_g)          <- ano_primeira_guerra
 
 #======== segunda guerra ===========#
 pais                    <- c("Alemanha","Áustria","Estados Unidos","França","Itália","Japão","Reino Unido","União Soviética")
