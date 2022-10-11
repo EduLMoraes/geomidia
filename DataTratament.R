@@ -414,7 +414,8 @@ p_i_b_s_g               <- data.frame("1938"   = c(351, 24, 800, 186, 141, 169, 
                                       "1944.1" = c(437, 29, 1499, 93, 117, 189, 346, 495),
                                       "1944.2" = c(437, 29, 1499, 93, 117, 189, 346, 495),
                                       "1945"   = c(310, 12, 1474, 101, 92, 144, 331, 396))
-row.names(p_i_b_s_g)     <- pais
+row.names(p_i_b_s_g)    <- pais
+p_i_b_s_g               <- as.data.frame(t(p_i_b_s_g))
 
 #### Graficos Pizza                 ####
 primeira_guerra_parti <- mundo@data$GM1 %>% as.data.frame()
