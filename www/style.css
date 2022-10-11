@@ -148,17 +148,32 @@ section.content{
     margin: 0;
     background-color: whitesmoke;
 }
-.treeview:hover{
-    background-color: #070707;
-    font-size: 28px;
-    
-}
 .treeview{
     font-size: 24px;
     min-height: 40  px;
-    background-color: transparent;
+    background-color: black;
     color: wheat;
 }
+.treeview:hover{
+    background-color: black;
+    font-size: 25px;
+    animation: treeview 1s forwards;
+}
+@keyframes treeview {
+    0%{
+        background-image: linear-gradient(to right, transparent, transparent, transparent, transparent);
+    }
+    25%{
+        background-image: linear-gradient(to right, rgb(17, 17, 17), transparent, transparent, transparent);
+    }
+    90%{
+        background-image: linear-gradient(to right, rgb(17, 17, 17), transparent);
+    }
+    100%{
+        background-color: rgb(17, 17, 17);
+    }
+}
+
 .treeview::marker{
     color: transparent;
 }

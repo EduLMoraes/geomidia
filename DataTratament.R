@@ -447,7 +447,7 @@ for(i in 1 : nrow(grupo_sete)){
 mundo@data <- certiMundo@data %>%
   inner_join(mundo@data, by = c('CNTRY_NAME'='CNTRY_NAME'))
 mundo@data <- mundo@data[, -c(14:27)]
-return(mundo@data)
+return(mundo, p_i_b_s_g, pib_tot, p_p_g, ranking)
 #writeOGR(mundo, dsn = "./geodata/mundo", layer = "mundoGeopolitico", driver = 'ESRI Shapefile', overwrite_layer = TRUE)
 #write.csv2(cidadesG, file = "./geodata/mundo/cidadesGlobalizadas.csv")
 #write.csv2(onuFundos, file = "./geodata/mundo/onuFundos.csv")
