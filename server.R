@@ -175,9 +175,9 @@ server <- function(input, output,  session){
     output$GraficoLin = renderText("Paises Atuantes Na Primeira Guerra Mundial"); output$mapa = renderLeaflet(mapaImp)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/prigue.html"))
     
-    renderPieChart(div_id = "graph_pie", data = imperios_centrais$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
-    renderLineChart(div_id = "graph_line", data = entrada_primeira_guerra, theme = 'roma', show.tools=F, show.legend = F)
-    renderBarChart(div_id = "graph_bar", data = primeira_guerra_barra, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
+    renderPieChart(div_id = "graph_pie", data = primeira_guerra_parti$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
+    renderLineChart(div_id = "graph_line", data = p_p_g, theme = 'roma', show.tools=F, show.legend = F)
+    renderBarChart(div_id = "graph_bar", data = t_m_p, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
   
   #     TELA ALIADOS              ----
@@ -187,9 +187,9 @@ server <- function(input, output,  session){
     output$GraficoLin = renderText("Paises Atuantes Na Primeira Guerra Mundial"); output$mapa = renderLeaflet(mapaAli)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/prigue.html"))
     
-    renderPieChart(div_id = "graph_pie", data = aliados_primeira$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
-    renderLineChart(div_id = "graph_line", data = entrada_primeira_guerra, theme = 'roma', show.tools=F, show.legend = F)
-    renderBarChart(div_id = "graph_bar", data = primeira_guerra_barra, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
+    renderPieChart(div_id = "graph_pie", data = primeira_guerra_parti$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
+    renderLineChart(div_id = "graph_line", data = p_p_g, theme = 'roma', show.tools=F, show.legend = F)
+    renderBarChart(div_id = "graph_bar", data = t_m_p, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
   
   #     TELA SEGUNDA GUERRA       ----

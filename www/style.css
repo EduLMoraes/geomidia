@@ -161,13 +161,13 @@ section.content{
 }
 @keyframes treeview {
     0%{
-        background-image: linear-gradient(to right, transparent, transparent, transparent, transparent);
+        background-image: linear-gradient(to right, transparent, transparent, transparent, transparent, transparent, transparent, transparent, transparent);
     }
     25%{
-        background-image: linear-gradient(to right, rgb(17, 17, 17), transparent, transparent, transparent);
+        background-image: linear-gradient(to right, rgb(17, 17, 17), transparent, transparent, transparent, transparent, transparent, transparent, transparent);
     }
     90%{
-        background-image: linear-gradient(to right, rgb(17, 17, 17), transparent);
+        background-image: linear-gradient(to right, rgb(17, 17, 17), transparent, transparent);
     }
     100%{
         background-color: rgb(17, 17, 17);
