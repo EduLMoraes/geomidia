@@ -1,4 +1,4 @@
-####    Mapas     ####
+####    Mapas                       ####
 {
   library("leaflet")
   library("rgdal")
@@ -66,7 +66,73 @@ mapaAli    <- mapaPaises %>%
 
 
 }
-####    Server    ####
+#### Graficos Barra                 ####
+tamanho               <- read.csv2("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/geodata/mundo/rankingArea.csv")
+ranking               <- tamanho[,-c(1:2)] %>% as.data.frame()
+row.names(ranking)    <- tamanho$Paises
+
+#======== primeira guerra ==========#
+Paises                <- c("França", "Alemanha", "Áustria-Hungria", "Grã-Bretanha", "Rússia", "Itália", "EUA", "Colônias Inglesas")
+t_m_p                 <- data.frame("Tropas" = c(8, 13, 9, 9, 18, 6, 4, 2))
+row.names(t_m_p)      <- Paises
+
+#======== segunda guerra ===========#
+pib_lad               <- c("1938", "1939",  "1940.1", "1940.2", "1941.1", "1941.2", "1942", "1943", "1944.1", "1944.2", "1945") 
+pib_tot               <- data.frame("Eixo"      = c(544, 595, 606, 835, 911, 911, 902, 895,748,655, 466),
+                                    "Aliados"   = c(470, 486, 398, 316,344,703,1906,2224,2457,2550,2394))
+row.names(pib_tot)    <- pib_lad
+
+#### Graficos Linha                 ####
+
+#======== primeira guerra ==========#
+ano_primeira_guerra     <- c(1914, 1915, 1916, 1917, 1918)
+p_p_g                   <- data.frame("Paises" = c(11, 12, 13, 14, 0))
+row.names(p_p_g)          <- ano_primeira_guerra
+
+#======== segunda guerra ===========#
+pais                    <- c("Alemanha","Áustria","Estados Unidos","França","Itália","Japão","Reino Unido","União Soviética")
+p_i_b_s_g               <- data.frame("1938"   = c(351, 24, 800, 186, 141, 169, 284, 359),
+                                      "1939"   = c(384, 27, 869, 199, 151, 184, 287, 366),
+                                      "1940.1" = c(387, 27, 943, 82, 147, 192, 316, 417),
+                                      "1940.2" = c(387, 27, 943, 82, 147, 192, 316, 417),
+                                      "1941.1" = c(412, 29, 1094, 130, 144, 196, 344, 359),
+                                      "1941.2" = c(412, 29, 1094, 130, 144, 196, 344, 359),
+                                      "1942"   = c(417, 27, 1235, 116, 145, 197, 353, 318),
+                                      "1943"   = c(426, 28, 1399, 110, 137, 194, 361, 464),
+                                      "1944.1" = c(437, 29, 1499, 93, 117, 189, 346, 495),
+                                      "1944.2" = c(437, 29, 1499, 93, 117, 189, 346, 495),
+                                      "1945"   = c(310, 12, 1474, 101, 92, 144, 331, 396))
+row.names(p_i_b_s_g)    <- pais
+p_i_b_s_g               <- as.data.frame(t(p_i_b_s_g))
+
+#### Graficos Pizza                 ####
+primeira_guerra_parti <- mundo@data$GM1 %>% as.data.frame()
+segunda_guerra_parti  <- mundo@data$GM2 %>% as.data.frame()
+guerra_fria           <- data.frame(mundo@data$OTAN_195, mundo@data$pacto_1955_1991)
+grupo_sete            <- mundo@data$G7 %>% as.data.frame()
+grupo_vinte           <- mundo@data$G20 %>% as.data.frame()
+sistemas_politicos    <- mundo@data$SIS_POL %>% as.data.frame()
+onu                   <- mundo@data$ONU %>% as.data.frame()
+imperios_centrais     <- mundo@data$IMP_CEN %>% as.data.frame()
+aliados_primeira      <- mundo@data$LADO %>% as.data.frame()
+ali                   <- sort(mundo@data$LADO) %>% as.data.frame()
+ali                   <- ali[-c(8:251),] %>% as.data.frame()
+
+for(i in 1 : nrow(grupo_sete)){
+  if(grupo_sete$.[i] == "T"){grupo_sete$.[i] = "Pertencente"}else{grupo_sete$.[i] = "Não pertencente"}
+  if(grupo_vinte$.[i] == "T"){grupo_vinte$.[i] = "Pertencente"}else{grupo_vinte$.[i] = "Não pertencente"}
+  if(guerra_fria$mundo.data.OTAN_195[i] == "T"){guerra_fria$Alianca[i] = "OTAN"} else{guerra_fria$Alianca[i] = "Outros países"}
+  if(guerra_fria$mundo.data.pacto_1955_1991[i] == "T"){guerra_fria$Alianca[i] = "Pacto"}
+  if(onu$.[i] == "T"){onu$.[i] = "Pertencente"}else{onu$.[i] = "Não Pertencente"}
+  if(primeira_guerra_parti$.[i] == "T"){primeira_guerra_parti$.[i] = "Participante"}else{primeira_guerra_parti$.[i] = "Não Participante"}
+  if(segunda_guerra_parti$.[i] == "T"){segunda_guerra_parti$.[i] = "Participante"}else{segunda_guerra_parti$.[i] = "Não Participante"}
+  if(sistemas_politicos$.[i] == "sociali"){sistemas_politicos$.[i] = "Socialismo"}else{sistemas_politicos$.[i] = "Capitalismo"}
+  if(imperios_centrais$.[i] == "T"){imperios_centrais$.[i] = "Imperios Centrais"}else{imperios_centrais$.[i] = "Não participante"}
+  if(aliados_primeira$.[i] == "Aliados"){aliados_primeira$.[i] = "Aliados"}else{aliados_primeira$.[i]="Outros países"}
+}
+
+
+####    Server                      ####
 server <- function(input, output,  session){
   #     TELA INICIAL              ----
   
