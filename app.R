@@ -1,4 +1,4 @@
-source("Script.R")
+source("/home/shiny/server.R")
 library("shiny")
 library("shinyjs")
 library("shinyBS")
