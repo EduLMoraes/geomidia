@@ -1,6 +1,6 @@
 #sidebar_button {
     height: 200px;
-    background-image: url('./estrelas.jpeg');
+    background-image: url('https://github.com/EduardoMoreaes/geomidia/raw/master/www/estrelas.jpeg');
     background-repeat: repeat-x;
     animation: anim-stars 60s infinite;
     padding: 20px;
@@ -57,7 +57,7 @@ section.sidebar .shiny-bound-input.action-button, section.sidebar .shiny-bound-i
    height: 400px;
 }
 .skin-red .main-header .navbar {
-    background-image: url('./estrelas.jpeg');
+    background-image: url('https://github.com/EduardoMoreaes/geomidia/raw/master/www/estrelas.jpeg');
     background-repeat: repeat-x;
     animation: anim-stars 60s infinite;
     height: auto;
@@ -134,7 +134,7 @@ body {
 .main-header {
     position: relative;
     padding: 0;
-    background-image: url('./estrelas.jpeg');
+    background-image: url('https://github.com/EduardoMoreaes/geomidia/raw/master/www/estrelas.jpeg');
     background-repeat: repeat-x;
     animation: anim-stars 60s infinite;
 }
