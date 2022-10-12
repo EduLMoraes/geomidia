@@ -1,4 +1,4 @@
-source("Dockerfile")
+source("Script.R")
 library("shiny")
 library("shinyjs")
 library("shinyBS")
