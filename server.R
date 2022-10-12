@@ -82,6 +82,34 @@ pib_tot               <- data.frame("Eixo"      = c(544, 595, 606, 835, 911, 911
                                     "Aliados"   = c(470, 486, 398, 316,344,703,1906,2224,2457,2550,2394))
 row.names(pib_tot)    <- pib_lad
 
+#======== guerra fria ==============#
+p                     <- c("Reino Unido", "França", "Itália", "Trieste", "Alemanha", "Paises Baixos", "Bélgica", "Luxemburgo", "Suiça", "Áustria", "Dinamarca", "Noruega", "Grécia", "Suécia", "Portugal", "Turquia", "Irlanda", "Islândia")
+rec_tot               <- data.frame("Total Recebido" = c(3297, 2296, 1204,1204, 1448, 1128, 777, 777, 500, 488, 385, 372, 366, 347, 140, 137, 133, 43))  
+
+row.names(rec_tot)    <- p
+
+#======== onu ======================#
+pa                    <- c("Estados Unidos", "Japão", "Alemanha", "França", "Reino Unido", "China", "Itália", "Canadá", "Espanha", "Brasil")
+onu_con               <- data.frame("Contribuídos" = c(22.000, 8.564, 6.090, 4.427, 4.567, 12.005, 3.307, 2.734, 2.146, 2.948))
+
+row.names(onu_con)    <- pa  
+
+#======== g7 ======================#
+pop                   <- c("Alemanha", "Canadá", "Estados Unidos", "França", "Itália", "Japão", "Reino Unido")
+g07                   <- data.frame("População"      = c(83237124,	38929902,	332183000, 67842582, 58983122, 125681593, 67025542),
+                                    "PIB_anual"      = c(3601750, 1682943, 19441544, 2500870, 1782050, 4172339, 2695503),
+                                    "PIB_per_capta"  = c(43290, 44026, 58527, 36660, 30150, 33198, 40216),
+                                    "Dívida_total"   = c(2475776, 1885855, 24610805, 2813087, 2677910, 11454265, 2569385))
+row.names(g07)        <- pop
+
+#======== g20 =====================#
+plp                   <- c("África do Sul", "Alemanha", "Arábia Saudita", "Argentina", "Austrália", "Brasil", "Canadá", "China", "Coreia do Sul", "Estados Unidos", "França", "Índia", "Indonésia", "Itália", "Japão", "México", "Reino Unido", "Rússia", "Turquia")
+g20                   <- data.frame("População"      = c(60143000, 83237124,35340680,45808747,25739256,213993441,38929902,1412360000,51744876,332183000,67842582,1393409033,272249000,58983122,125681593,130262220,67025542,145558000,84680273),
+                                    "PIB_anual"      = c(353384,3601750,704656,415568,1380745,1360869,1682943,14758612,1520447,19441544,2500870,2571622,1002673,1782050,4172339,1094618,2695503,1501006,689547),
+                                    "PIB_per_capta"  = c(5876,43290,19939,9072,53644,6359,44026,10450,29384,58527,36660,1846,3683,30150,33198,8403,40216,10312,8190),
+                                    "Dívida_total"   = c(244276,2475776,211548,332994,688738,1254309,1885855,8876399,621430,24610805,2813087,2108054,429427,2677910,11454265,630793,2569385,255488,284046))
+row.names(g20)        <- plp
+
 #### Graficos Linha                 ####
 
 #======== primeira guerra ==========#
@@ -105,12 +133,23 @@ p_i_b_s_g               <- data.frame("1938"   = c(351, 24, 800, 186, 141, 169, 
 row.names(p_i_b_s_g)    <- pais
 p_i_b_s_g               <- as.data.frame(t(p_i_b_s_g))
 
+#======== guerra fria ==============#
+anos                  <- c("1949","1959","1969","1979","1989","1999","2009","2019","2022")
+n_p_a                 <- data.frame("OTAN"              = c(12,14,13,13,14,18,27,28,30),
+                                    "Pacto de Varsóvia" = c(7,7,7,7,7,7,0,0,0))
+row.names(n_p_a)      <- anos
+
+#======== onu ======================#
+on                    <- data.frame("Países membros"    = c(51, 194))
+row.names(on)         <- c("1945","2022")
+
+#======== g7-g20-sis ===============#
+nulo                  <- data.frame(c(0))
+
 #### Graficos Pizza                 ####
 primeira_guerra_parti <- mundo@data$GM1 %>% as.data.frame()
 segunda_guerra_parti  <- mundo@data$GM2 %>% as.data.frame()
 guerra_fria           <- data.frame(mundo@data$OTAN_195, mundo@data$pacto_1955_1991)
-grupo_sete            <- mundo@data$G7 %>% as.data.frame()
-grupo_vinte           <- mundo@data$G20 %>% as.data.frame()
 sistemas_politicos    <- mundo@data$SIS_POL %>% as.data.frame()
 onu                   <- mundo@data$ONU %>% as.data.frame()
 imperios_centrais     <- mundo@data$IMP_CEN %>% as.data.frame()
@@ -118,9 +157,7 @@ aliados_primeira      <- mundo@data$LADO %>% as.data.frame()
 ali                   <- sort(mundo@data$LADO) %>% as.data.frame()
 ali                   <- ali[-c(8:251),] %>% as.data.frame()
 
-for(i in 1 : nrow(grupo_sete)){
-  if(grupo_sete$.[i] == "T"){grupo_sete$.[i] = "Pertencente"}else{grupo_sete$.[i] = "Não pertencente"}
-  if(grupo_vinte$.[i] == "T"){grupo_vinte$.[i] = "Pertencente"}else{grupo_vinte$.[i] = "Não pertencente"}
+for(i in 1 : nrow(onu)){
   if(guerra_fria$mundo.data.OTAN_195[i] == "T"){guerra_fria$Alianca[i] = "OTAN"} else{guerra_fria$Alianca[i] = "Outros países"}
   if(guerra_fria$mundo.data.pacto_1955_1991[i] == "T"){guerra_fria$Alianca[i] = "Pacto"}
   if(onu$.[i] == "T"){onu$.[i] = "Pertencente"}else{onu$.[i] = "Não Pertencente"}
@@ -130,6 +167,9 @@ for(i in 1 : nrow(grupo_sete)){
   if(imperios_centrais$.[i] == "T"){imperios_centrais$.[i] = "Imperios Centrais"}else{imperios_centrais$.[i] = "Não participante"}
   if(aliados_primeira$.[i] == "Aliados"){aliados_primeira$.[i] = "Aliados"}else{aliados_primeira$.[i]="Outros países"}
 }
+
+g_7 <- c(rep("G7", 774), rep("mundo", 7225)) %>% as.data.frame()
+g_0 <- c(rep("G20", 4645), rep("Mundo", 3345)) %>% as.data.frame()
 
 
 ####    Server                      ####
@@ -232,8 +272,8 @@ server <- function(input, output,  session){
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/guefri.html"))
     
     renderPieChart(div_id = "graph_pie", data = guerra_fria$Alianca, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
-    renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
-    renderBarChart(div_id = "graph_bar", data = ranking, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
+    renderLineChart(div_id = "graph_line", data = n_p_a, theme = 'roma', show.tools=F, show.legend = F)
+    renderBarChart(div_id = "graph_bar", data = rec_tot, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
   #     TELA OTAN                 ----
   
@@ -243,8 +283,8 @@ server <- function(input, output,  session){
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/otanre.html"))
     
     renderPieChart(div_id = "graph_pie", data = guerra_fria$Alianca, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
-    renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
-    renderBarChart(div_id = "graph_bar", data = ranking, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
+    renderLineChart(div_id = "graph_line", data = n_p_a, theme = 'roma', show.tools=F, show.legend = F)
+    renderBarChart(div_id = "graph_bar", data = rec_tot, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
   
   #     TELA PACTO VARSOVIA       ----
@@ -255,56 +295,56 @@ server <- function(input, output,  session){
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/pactov.html"))
     
     renderPieChart(div_id = "graph_pie", data = guerra_fria$Alianca, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
-    renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
-    renderBarChart(div_id = "graph_bar", data = ranking, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
+    renderLineChart(div_id = "graph_line", data = n_p_a, theme = 'roma', show.tools=F, show.legend = F)
+    renderBarChart(div_id = "graph_bar", data = rec_tot, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
   
   #     TELA ONU                  ----
   
   observeEvent(input$onu,{
-    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
+    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Top 10 doações feitas (em %)")
     output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaOnu)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/onures.html"))
     
     renderPieChart(div_id = "graph_pie", data = onu$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
-    renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
-    renderBarChart(div_id = "graph_bar", data = ranking, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
+    renderLineChart(div_id = "graph_line", data = on, theme = 'roma', show.tools=F, show.legend = F)
+    renderBarChart(div_id = "graph_bar", data = onu_con, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
   
   #     TELA GRUPO 7              ----
   
   observeEvent(input$gst,{
-    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
-    output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaG7)
-    output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/g07res.html"))
+    output$GraficoPie = renderText("Divisão Global (em milhões)"); output$GraficoBar = renderText("Ranking Países (Moeda em M.£.)")
+    output$mapa = renderLeaflet(mapaG7); output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/g07res.html"))
+    output$GraficoLin = renderText("Gráfico de linha");
     
-    renderPieChart(div_id = "graph_pie", data = grupo_sete$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
-    renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
-    renderBarChart(div_id = "graph_bar", data = ranking, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
+    renderPieChart(div_id = "graph_pie", data = g_7$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
+    renderLineChart(div_id = "graph_line", data = nulo, theme = 'roma', show.tools=F, show.legend = F)
+    renderBarChart(div_id = "graph_bar", data = g07, theme = 'roma', show.tools=T, show.legend = T, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
   
   #     TELA GRUPO 20             ----
   
   observeEvent(input$gvt,{
-    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
-    output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaG20)
-    output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/g20res.html"))
+    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países (Moeda em M.£.)")
+    output$mapa = renderLeaflet(mapaG20); output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/g20res.html"))
+    output$GraficoLin = renderText("Gráfico de linha");
     
-    renderPieChart(div_id = "graph_pie", data = grupo_vinte$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
-    renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
-    renderBarChart(div_id = "graph_bar", data = ranking, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
+    renderPieChart(div_id = "graph_pie", data = g_0$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
+    renderLineChart(div_id = "graph_line", data = nulo, theme = 'roma', show.tools=F, show.legend = F)
+    renderBarChart(div_id = "graph_bar", data = g20, theme = 'roma', show.tools=T, show.legend = T, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
   
   #     TELA SISTEMAS POLITICOS   ----
   
   observeEvent(input$sis,{
-    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
-    output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaSis)
+    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Gráfico de Barras")
+    output$GraficoLin = renderText("Gráfico de Linhas"); output$mapa = renderLeaflet(mapaSis)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/sisres.html"))
     
     renderPieChart(div_id = "graph_pie", data = sistemas_politicos$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
-    renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
-    renderBarChart(div_id = "graph_bar", data = ranking, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
+    renderLineChart(div_id = "graph_line", data = nulo, theme = 'roma', show.tools=F, show.legend = F)
+    renderBarChart(div_id = "graph_bar", data = nulo, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
   
 

@@ -86,12 +86,12 @@ ui <- dashboardPage(
                       
                       
                       fluidRow(
-                        column(6,
+                        column(5,
                                textOutput(outputId = "GraficoPie"),
                                tags$div(id="graph_pie", style="width:100%;height:300px;"),  # Specify the div for the chart.
                                deliverChart(div_id = "graph_pie"),
                         ),
-                        column(6,
+                        column(7,
                                # Deliver the plotting
                                
                                textOutput(outputId = "GraficoBar"),
