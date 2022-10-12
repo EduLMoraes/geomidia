@@ -1,3 +1,4 @@
+source("Dockerfile")
 library("shiny")
 library("shinyjs")
 library("shinyBS")
