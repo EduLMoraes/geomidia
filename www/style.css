@@ -19,7 +19,7 @@
 section.sidebar .shiny-bound-input.action-button, section.sidebar .shiny-bound-input.action-link {
     margin: auto;
     display:block;
-    background-image: url('./terra.jpeg');
+    background-image: url('https://github.com/EduardoMoreaes/geomidia/raw/master/www/terra.jpeg');
 }
 @keyframes anim-earth {
     from {
@@ -33,7 +33,7 @@ section.sidebar .shiny-bound-input.action-button, section.sidebar .shiny-bound-i
 .btn-danger {
     margin: auto;
     display:block;
-    background-image: url('./terra.jpeg');
+    background-image: url('https://github.com/EduardoMoreaes/geomidia/raw/master/www/terra.jpeg');
     background-position-y: -15px;
     border-color: cadetblue;
     transition: 5s;
