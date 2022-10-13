@@ -1,1 +1,1 @@
-    <iframe scrolling="no" frameborder="no" src="https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/server.R"> </iframe>
+    <iframe width="100%" height="100%" scrolling="no" frameborder="no" src="https://github.com/EduardoMoreaes/geomidia/raw/master/geomidia.Rproj"> </iframe>
