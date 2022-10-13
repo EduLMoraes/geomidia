@@ -130,6 +130,7 @@ body {
     color: black;
     background-color: #fff;
     padding: 0;
+    height: 100%;
 }
 .main-header {
     position: relative;
