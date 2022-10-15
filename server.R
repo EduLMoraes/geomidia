@@ -354,8 +354,8 @@ server <- function(input, output,  session){
     output$GraficoLin = renderText("Gráfico de Linhas (sem dados)"); output$mapa = renderLeaflet(mapaPaises)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/refere.html"))
     
-    renderPieChart(div_id = "graph_pie", data = nulo, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
-    renderLineChart(div_id = "graph_line", data = nulo, theme = 'roma', show.tools=F, show.legend = F)
-    renderBarChart(div_id = "graph_bar", data = nulo, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
+    renderPieChart(div_id = "graph_pie", data = sistemas_politicos$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
+    renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
+    renderBarChart(div_id = "graph_bar", data = ranking, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
 }
