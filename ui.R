@@ -51,7 +51,7 @@ ui <- dashboardPage(
                       ),
                       br(),
                       # Organização        -----
-                      menuItem("ORGANIZÇÕES", tabName = "organizacoes", icon = icon("cog", lib = "glyphicon"),
+                      menuItem("ORGANIZAÇÕES", tabName = "organizacoes", icon = icon("cog", lib = "glyphicon"),
                                actionButton(inputId = "onu", label = "ONU", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;"),
                                actionButton(inputId = "gst", label = "G7", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;"),
                                actionButton(inputId = "gvt", label = "G20", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;")
@@ -60,6 +60,12 @@ ui <- dashboardPage(
                       # Sistemas Políticos ----
                       menuItem("SISTEMAS POLÍTICOS", tabName = "aliancas", icon = icon("money"),
                                actionButton(inputId = "sis", label = "Sistemas Políticos", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;")
+                      ),
+                      br(),
+                    
+                      # Referências        ----
+                      menuItem("REFERÊNCIAS", tabName = "referencias", icon = icon("book"),
+                                actionButton(inputId = "ref", label = "Referências utilizadas", style="width:90%; height: 44px; background-color:black; background-image: linear-gradient(to right, transparent, darkgreen,green, darkgreen, transparent); color: wheat; font-size: 20px; font-family: cursive; margin-left:-15px; margin-top:8px; border-color: transparent; text-align: center;")
                       ),
                       br()
                     ),

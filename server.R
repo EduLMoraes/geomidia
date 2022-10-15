@@ -235,8 +235,8 @@ server <- function(input, output,  session){
   #     TELA SEGUNDA GUERRA       ----
   
   observeEvent(input$gm2,{
-    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
-    output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaGM2)
+    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("PIB total de cada país")
+    output$GraficoLin = renderText("PIB durante a Segunda Guerra Mundial"); output$mapa = renderLeaflet(mapaGM2)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/seggue.html"))
     
     renderPieChart(div_id = "graph_pie", data = segunda_guerra_parti$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
@@ -247,8 +247,8 @@ server <- function(input, output,  session){
   #     TELA LADOS SEGUNDA GUERRA ----
   
   observeEvent(input$lsg,{
-    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
-    output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaLado)
+    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("PIB total de cada país")
+    output$GraficoLin = renderText("PIB durante a Segunda Guerra Mundial"); output$mapa = renderLeaflet(mapaLado)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/seggue.html"))
     
     renderPieChart(div_id = "graph_pie", data = ali$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
@@ -258,17 +258,17 @@ server <- function(input, output,  session){
   
   
   observeEvent(input$ali,{
-    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
-    output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaAli)
+    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("PIB total de cada país")
+    output$GraficoLin = renderText("PIB durante a Segunda Guerra Mundial"); output$mapa = renderLeaflet(mapaAli)
     
-    renderPieChart(div_id = "graph_pie", data = mundo@data$LADO, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
-    renderLineChart(div_id = "graph_line", data = ranking, theme = 'roma', show.tools=F, show.legend = F)
-    renderBarChart(div_id = "graph_bar", data = ranking, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
+    renderPieChart(div_id = "graph_pie", data = ali$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
+    renderLineChart(div_id = "graph_line", data = p_i_b_s_g, theme = 'vintage', show.tools=F, show.legend = F)
+    renderBarChart(div_id = "graph_bar", data = pib_tot, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
   })
   #     TELA GUERRA FRIA          ####
   observeEvent(input$gf,{
-    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
-    output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaPaises)
+    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Total Recebido (em milhões)")
+    output$GraficoLin = renderText("Quantidade de países membros ao longo dos anos"); output$mapa = renderLeaflet(mapaPaises)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/guefri.html"))
     
     renderPieChart(div_id = "graph_pie", data = guerra_fria$Alianca, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
@@ -278,8 +278,8 @@ server <- function(input, output,  session){
   #     TELA OTAN                 ----
   
   observeEvent(input$otan,{
-    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
-    output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaOtan22)
+    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Total Recebido (em milhões)")
+    output$GraficoLin = renderText("Quantidade de países membros ao longo dos anos"); output$mapa = renderLeaflet(mapaOtan22)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/otanre.html"))
     
     renderPieChart(div_id = "graph_pie", data = guerra_fria$Alianca, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
@@ -290,8 +290,8 @@ server <- function(input, output,  session){
   #     TELA PACTO VARSOVIA       ----
   
   observeEvent(input$pct,{
-    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países")
-    output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaPac)
+    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Total Recebido (em milhões)")
+    output$GraficoLin = renderText("Quantidade de países membros ao longo dos anos"); output$mapa = renderLeaflet(mapaPac)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/pactov.html"))
     
     renderPieChart(div_id = "graph_pie", data = guerra_fria$Alianca, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
@@ -303,7 +303,7 @@ server <- function(input, output,  session){
   
   observeEvent(input$onu,{
     output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Top 10 doações feitas (em %)")
-    output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaOnu)
+    output$GraficoLin = renderText("Países membros ao longo dos anos"); output$mapa = renderLeaflet(mapaOnu)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/onures.html"))
     
     renderPieChart(div_id = "graph_pie", data = onu$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
@@ -316,7 +316,7 @@ server <- function(input, output,  session){
   observeEvent(input$gst,{
     output$GraficoPie = renderText("Divisão Global (em milhões)"); output$GraficoBar = renderText("Ranking Países (Moeda em M.£.)")
     output$mapa = renderLeaflet(mapaG7); output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/g07res.html"))
-    output$GraficoLin = renderText("Gráfico de linha");
+    output$GraficoLin = renderText("Gráfico de linha (sem dados)");
     
     renderPieChart(div_id = "graph_pie", data = g_7$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = nulo, theme = 'roma', show.tools=F, show.legend = F)
@@ -326,9 +326,9 @@ server <- function(input, output,  session){
   #     TELA GRUPO 20             ----
   
   observeEvent(input$gvt,{
-    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking Países (Moeda em M.£.)")
+    output$GraficoPie = renderText("Divisão Global (em milhões)"); output$GraficoBar = renderText("Ranking Países (Moeda em M.£.)")
     output$mapa = renderLeaflet(mapaG20); output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/g20res.html"))
-    output$GraficoLin = renderText("Gráfico de linha");
+    output$GraficoLin = renderText("Gráfico de linha (sem dados)");
     
     renderPieChart(div_id = "graph_pie", data = g_0$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
     renderLineChart(div_id = "graph_line", data = nulo, theme = 'roma', show.tools=F, show.legend = F)
@@ -338,8 +338,8 @@ server <- function(input, output,  session){
   #     TELA SISTEMAS POLITICOS   ----
   
   observeEvent(input$sis,{
-    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Gráfico de Barras")
-    output$GraficoLin = renderText("Gráfico de Linhas"); output$mapa = renderLeaflet(mapaSis)
+    output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Gráfico de Barras (sem dados)")
+    output$GraficoLin = renderText("Gráfico de Linhas (sem dados)"); output$mapa = renderLeaflet(mapaSis)
     output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/sisres.html"))
     
     renderPieChart(div_id = "graph_pie", data = sistemas_politicos$., theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
@@ -348,4 +348,14 @@ server <- function(input, output,  session){
   })
   
 
+  #     TELA REFERENCIAS          ----
+  observeEvent(input$ref,{
+    output$GraficoPie = renderText("Gráfico de pizza (sem dados)"); output$GraficoBar = renderText("Gráfico de Barras (sem dados)")
+    output$GraficoLin = renderText("Gráfico de Linhas (sem dados)"); output$mapa = renderLeaflet(mapaPaises)
+    output$texto = renderUI(includeHTML("https://raw.githubusercontent.com/EduardoMoreaes/geomidia/master/www/refere.html"))
+    
+    renderPieChart(div_id = "graph_pie", data = nulo, theme = 'roma', show.tools=F, show.legend = F,  radius = "80%")
+    renderLineChart(div_id = "graph_line", data = nulo, theme = 'roma', show.tools=F, show.legend = F)
+    renderBarChart(div_id = "graph_bar", data = nulo, theme = 'roma', show.tools=T, show.legend = F, direction="vertical", grid_left = '3%', font.size.legend=15)
+  })
 }
