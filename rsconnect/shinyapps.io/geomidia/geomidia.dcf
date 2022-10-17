@@ -5,9 +5,9 @@ account: geomidia
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7069487
-bundleId: 6393797
+bundleId: 6406230
 url: https://geomidia.shinyapps.io/geomidia/
-when: 1665542883.54594
-lastSyncTime: 1665542883.54596
+when: 1665846472.07105
+lastSyncTime: 1665846472.07106
 asMultiple: FALSE
 asStatic: FALSE
