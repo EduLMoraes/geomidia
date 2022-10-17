@@ -175,6 +175,7 @@ g_0 <- c(rep("G20", 4645), rep("Mundo", 3345)) %>% as.data.frame()
 ####    Server                      ####
 server <- function(input, output,  session){
   #     TELA INICIAL              ----
+  output$credito = renderText("Dev: Eduardo Moraes")
   
   output$GraficoPie = renderText("Divisão Global"); output$GraficoBar = renderText("Ranking dos Países por Território")
   output$GraficoLin = renderText("Linha Temporal"); output$mapa = renderLeaflet(mapaContin)

@@ -178,3 +178,10 @@ section.content{
 .treeview::marker{
     color: transparent;
 }
+#rodape{
+    background-color: darkslategray;
+    color: grey;
+    text-align: justify;
+    font-size: 14px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
